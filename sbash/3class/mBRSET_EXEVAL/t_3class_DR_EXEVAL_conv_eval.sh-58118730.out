@@ -1,0 +1,58 @@
+Backbone: convnextv2_large
+Backbone mode: eval
+Using 2 GPUs!
+loading csv file in /home/livieymli/brset_analysis/mBRSET/data/train_mbrset_nooverlap.csv
+loading csv file in /home/livieymli/brset_analysis/mBRSET/data/labels_mbrset.csv
+Using 2 GPUs!
+
+100%|██████████| 306/306 [1:31:30<00:00, 17.94s/it]
+
+saved
+              precision    recall  f1-score   support
+
+           0       0.77      0.35      0.49       922
+           1       0.85      0.99      0.91      3750
+           2       0.82      0.48      0.61       212
+
+    accuracy                           0.84      4884
+   macro avg       0.82      0.61      0.67      4884
+weighted avg       0.84      0.84      0.82      4884
+
+Matthews Correlation Coefficient: 0.5270181669423761
+Brier Score: 0.09123878926038742
+AUC: 0.7845864148299079
+Accuracy: 0.8443898443898444
+Precision: 0.8158672331197644, weighted: 0.8357968167185877
+Recall: 0.6070430610695007, weighted: 0.8443898443898444
+F1 Score: 0.6690668338781585, weighted: 0.8197847243697369
+##################################################  Saliency Maps  ##################################################
+
+Class 0:
+Class 1:
+Class 2:
+
+
+100%|██████████| 304/304 [1:30:38<00:00, 17.89s/it]
+
+              precision    recall  f1-score   support
+
+           0       0.77      0.36      0.49       921
+           1       0.85      0.99      0.91      3727
+           2       0.82      0.48      0.60       211
+
+    accuracy                           0.84      4859
+   macro avg       0.82      0.61      0.67      4859
+weighted avg       0.84      0.84      0.82      4859
+
+Matthews Correlation Coefficient: 0.5264785491121181
+Brier Score: 0.0916404202580452
+AUC: 0.7837869062513555
+Accuracy: 0.8437950195513481
+Precision: 0.815189135656421, weighted: 0.8352192775448432
+Recall: 0.6063215561208011, weighted: 0.8437950195513481
+F1 Score: 0.668276799279905, weighted: 0.8191274204813788
+##################################################  Saliency Maps  ##################################################
+
+Class 0:
+Class 1:
+Class 2:

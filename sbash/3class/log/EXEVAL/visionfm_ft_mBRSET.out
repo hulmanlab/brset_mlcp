@@ -1,0 +1,31 @@
+Using 0 GPUs!
+loading csv file in /home/livieymli/brset_analysis/mBRSET/data/train_mbrset_nooverlap.csv
+loading csv file in /home/livieymli/brset_analysis/mBRSET/data/labels_mbrset.csv
+loading csv file in /home/livieymli/brset_analysis/mBRSET/data/val_mbrset_nooverlap.csv
+<All keys matched successfully>
+
+100%|██████████| 306/306 [10:30<00:00,  2.06s/it]
+saved
+              precision    recall  f1-score   support
+
+           0       0.69      0.20      0.31       922
+           1       0.83      0.97      0.90      3750
+           2       0.55      0.64      0.59       212
+
+    accuracy                           0.81      4884
+   macro avg       0.69      0.60      0.60      4884
+weighted avg       0.79      0.81      0.77      4884
+
+Matthews Correlation Coefficient: 0.414037524683609
+Brier Score: 0.1310755727533646
+AUC: 0.7990720788271855
+Accuracy: 0.811015561015561
+Precision: 0.6916764145700748, weighted: 0.7941429609810259
+Recall: 0.6017016057517838, weighted: 0.811015561015561
+F1 Score: 0.5975104360165019, weighted: 0.7720923628384705
+
+##################################################  Saliency Maps  ##################################################
+
+Class 0:
+Class 1:
+Class 2:

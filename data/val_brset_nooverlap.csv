@@ -1,0 +1,979 @@
+image_id,patient_id,camera,patient_age,comorbidities,diabetes_time_y,insuline,patient_sex,exam_eye,diabetes,nationality,optic_disc,vessels,macula,DR_SDRG,DR_ICDR,focus,Illuminaton,image_field,artifacts,diabetic_retinopathy,macular_edema,scar,nevus,amd,vascular_occlusion,hypertensive_retinopathy,drusens,hemorrhage,retinal_detachment,myopic_fundus,increased_cup_disc,other,quality
+img00021,11,Canon CR,21.0,diabetes1,14,yes,2,1,yes,Brazil,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00022,11,Canon CR,21.0,diabetes1,14,yes,2,2,yes,Brazil,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00134,68,Canon CR,19.0,diabetes1,14,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00135,68,Canon CR,19.0,diabetes1,14,yes,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00173,88,Canon CR,30.0,diabetes1,23,yes,1,1,yes,Brazil,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00174,88,Canon CR,30.0,diabetes1,23,yes,1,2,yes,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00201,102,Canon CR,16.0,diabetes1,6,yes,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00202,102,Canon CR,16.0,diabetes1,6,yes,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00291,147,Canon CR,10.0,diabetes1,2,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00292,147,Canon CR,10.0,diabetes1,2,yes,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00297,150,Canon CR,25.0,diabetes1,16,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00298,150,Canon CR,25.0,diabetes1,16,yes,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00323,163,Canon CR,19.0,diabetes1,12,yes,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00324,163,Canon CR,19.0,diabetes1,12,yes,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00329,166,Canon CR,66.0,"diabetes, hypertension",22,no,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00330,166,Canon CR,66.0,"diabetes, hypertension",22,no,1,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00356,180,Canon CR,91.0,,,,2,1,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00391,200,Canon CR,63.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00392,200,Canon CR,63.0,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00420,216,Canon CR,51.0,"diabetes, hypertension",20,yes,1,1,yes,Brazil,1,2,1,4,4,1,1,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img00421,216,Canon CR,51.0,"diabetes, hypertension",20,yes,1,2,yes,Brazil,1,2,1,4,4,1,1,2,1,1,0,0,0,0,0,1,0,0,0,0,0,0,Inadequate
+img00449,231,Canon CR,84.0,0,,,2,1,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00450,231,Canon CR,84.0,0,,,2,2,No,Brazil,2,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img00470,242,Canon CR,54.0,diabetes,4,no,1,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00471,242,Canon CR,54.0,diabetes,4,no,1,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00474,244,Canon CR,42.0,hypothyroidism,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00475,244,Canon CR,42.0,hypothyroidism,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00498,257,Canon CR,59.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00499,257,Canon CR,59.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00509,264,Canon CR,57.0,"hypertension , hypothyroidism",,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00510,264,Canon CR,57.0,"hypertension , hypothyroidism",,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00548,284,Canon CR,63.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img00549,284,Canon CR,63.0,,,,1,2,No,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img00633,328,Canon CR,74.0,hypertension,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00634,328,Canon CR,74.0,hypertension,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00657,340,Canon CR,74.0,hypertension,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00658,340,Canon CR,74.0,hypertension,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00701,363,Canon CR,,,,,2,1,No,Brazil,2,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,Adequate
+img00702,363,Canon CR,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00716,371,Canon CR,71.0,"hypertension , rheumatoid arthritis",,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00717,371,Canon CR,71.0,"hypertension , rheumatoid arthritis",,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00753,390,Canon CR,47.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00754,390,Canon CR,47.0,0,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00802,415,Canon CR,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img00803,415,Canon CR,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img00823,426,Canon CR,66.0,"diabetes, hypertension",4,no,2,1,yes,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img00824,426,Canon CR,66.0,"diabetes, hypertension",4,no,2,2,yes,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img00848,440,Canon CR,60.0,"diabetes, hypertension",,,2,1,yes,Brazil,1,1,1,1,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00849,440,Canon CR,60.0,"diabetes, hypertension",,,2,2,yes,Brazil,1,1,1,2,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00880,456,Canon CR,88.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img00881,456,Canon CR,88.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00882,457,Canon CR,56.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00883,457,Canon CR,56.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00934,484,Canon CR,59.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img00935,484,Canon CR,59.0,hypertension,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00988,512,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img00989,512,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01040,541,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01041,541,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img01072,557,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01073,557,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01074,558,Canon CR,49.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01075,558,Canon CR,49.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01101,572,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01102,572,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01121,583,NIKON NF5050,,,,,2,2,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img01122,583,NIKON NF5050,,,,,2,1,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img01127,586,Canon CR,77.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img01128,586,Canon CR,77.0,hypertension,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01141,594,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01142,594,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01147,597,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,1,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01148,597,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,1,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01161,604,Canon CR,68.0,hypertension,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01162,604,Canon CR,68.0,hypertension,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01172,610,NIKON NF5050,,,,,1,2,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img01186,618,Canon CR,46.0,0,,,1,1,No,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01187,618,Canon CR,46.0,0,,,1,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01218,634,NIKON NF5050,,,,,2,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,1,0,0,0,0,1,0,0,0,0,0,Adequate
+img01245,649,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,3,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01246,649,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,3,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01249,651,Canon CR,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01250,651,Canon CR,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01287,672,Canon CR,45.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01288,672,Canon CR,45.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01310,685,Canon CR,45.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01311,685,Canon CR,45.0,0,,,1,2,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img01314,687,Canon CR,83.0,diabetes,10,,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img01315,687,Canon CR,83.0,diabetes,10,,2,2,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01316,688,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01317,688,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01371,717,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01372,717,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01379,721,Canon CR,73.0,"diabetes, hypertension",,no,2,1,yes,Brazil,1,2,2,2,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01380,721,Canon CR,73.0,"diabetes, hypertension",,no,2,2,yes,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01393,728,NIKON NF5050,65.0,epilepsy,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01456,763,NIKON NF5050,,,,,1,2,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img01457,763,NIKON NF5050,,,,,1,1,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img01462,766,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01463,766,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01479,775,Canon CR,43.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01480,775,Canon CR,43.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01493,782,Canon CR,51.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01494,782,Canon CR,51.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01535,804,Canon CR,43.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01536,804,Canon CR,43.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01537,805,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01538,805,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01563,818,NIKON NF5050,,,,,1,2,No,Brazil,1,2,2,4,4,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img01564,818,NIKON NF5050,,,,,1,1,No,Brazil,1,2,2,4,4,1,1,1,1,1,0,0,0,0,0,1,0,1,0,0,0,0,Adequate
+img01567,820,Canon CR,33.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img01568,820,Canon CR,33.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img01582,828,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01583,828,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01594,834,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img01595,834,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img01600,837,NIKON NF5050,,,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,1,0,Adequate
+img01601,837,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01648,863,Canon CR,71.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01649,863,Canon CR,71.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01774,933,Canon CR,59.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01775,933,Canon CR,59.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01790,941,Canon CR,77.0,hypertension,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Adequate
+img01791,941,Canon CR,77.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,1,0,0,0,0,Adequate
+img01794,943,Canon CR,62.0,diabetes,2,no,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01795,943,Canon CR,62.0,diabetes,2,no,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01818,956,Canon CR,,,,,2,1,No,Brazil,1,2,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01850,973,Canon CR,85.0,hypertension,,,2,1,No,Brazil,2,2,2,0,0,1,1,1,1,0,0,0,0,0,1,0,1,0,0,0,0,0,Adequate
+img01851,973,Canon CR,85.0,hypertension,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img01862,979,Canon CR,55.0,diabetes,6,no,1,1,yes,Brazil,1,1,2,3,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01872,986,Canon CR,69.0,,,,2,1,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01873,986,Canon CR,69.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img01877,989,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img01915,1010,Canon CR,40.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01916,1010,Canon CR,40.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01924,1015,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01925,1015,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img01936,1021,Canon CR,20.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01937,1021,Canon CR,20.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01977,1044,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01978,1044,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01997,1055,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img01998,1055,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02097,1108,Canon CR,55.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02098,1108,Canon CR,55.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02109,1114,Canon CR,59.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02110,1114,Canon CR,59.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02141,1131,Canon CR,66.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02142,1131,Canon CR,66.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02200,1161,Canon CR,37.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02201,1161,Canon CR,37.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02246,1185,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02267,1196,NIKON NF5050,30.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02268,1196,NIKON NF5050,30.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02269,1197,Canon CR,39.0,,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,1,0,Adequate
+img02270,1197,Canon CR,39.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02316,1222,Canon CR,44.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02317,1222,Canon CR,44.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02369,1249,Canon CR,31.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02370,1249,Canon CR,31.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02381,1255,Canon CR,28.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02382,1255,Canon CR,28.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02386,1258,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02387,1258,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02455,1293,NIKON NF5050,64.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02456,1293,NIKON NF5050,64.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02471,1301,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img02472,1301,NIKON NF5050,,,,,2,1,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img02589,1363,NIKON NF5050,,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img02590,1363,NIKON NF5050,,,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img02642,1391,Canon CR,64.0,0,,,2,1,No,Brazil,2,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,1,0,Adequate
+img02643,1391,Canon CR,64.0,0,,,2,2,No,Brazil,2,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,1,0,Adequate
+img02656,1399,Canon CR,50.0,"diabetes, hypertension",7,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02657,1399,Canon CR,50.0,"diabetes, hypertension",7,yes,2,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02660,1402,NIKON NF5050,,,,,2,1,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,Adequate
+img02661,1402,NIKON NF5050,,,,,2,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,Adequate
+img02691,1419,NIKON NF5050,42.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02692,1419,NIKON NF5050,42.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Inadequate
+img02701,1424,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02702,1424,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,1,Adequate
+img02719,1433,NIKON NF5050,63.0,cardiopathy,,,2,2,No,Brazil,2,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02720,1433,NIKON NF5050,63.0,cardiopathy,,,2,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img02733,1442,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img02734,1442,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img02735,1443,Canon CR,86.0,"diabetes, hypertension",30,,1,1,yes,Brazil,1,2,2,3,2,1,1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,0,Adequate
+img02736,1443,Canon CR,86.0,"diabetes, hypertension",30,,1,2,yes,Brazil,1,2,1,0,1,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,Adequate
+img02760,1456,Canon CR,79.0,"diabetes, hypertension",,,1,1,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02761,1456,Canon CR,79.0,"diabetes, hypertension",,,1,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02783,1470,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,4,4,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02784,1470,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,3,3,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02787,1472,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02807,1482,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img02808,1482,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img02809,1483,Canon CR,57.0,0,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02810,1483,Canon CR,57.0,0,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02813,1485,Canon CR,64.0,0,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img02824,1491,Canon CR,58.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02825,1491,Canon CR,58.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02840,1499,Canon CR,74.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img02850,1505,NIKON NF5050,71.0,,,,1,1,No,Brazil,1,1,2,3,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02869,1516,Canon CR,64.0,arrhythmia,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02870,1516,Canon CR,64.0,arrhythmia,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02880,1522,NIKON NF5050,,,,,1,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img02881,1522,NIKON NF5050,,,,,1,1,No,Brazil,2,2,1,0,0,1,1,1,1,0,0,0,0,0,0,1,0,0,0,0,1,0,Adequate
+img02893,1529,Canon CR,85.0,"diabetes, hypertension",10,yes,1,1,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02894,1529,Canon CR,85.0,"diabetes, hypertension",10,yes,1,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img02932,1550,Canon CR,67.0,0,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img02933,1550,Canon CR,67.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02943,1556,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02944,1556,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02955,1562,Canon CR,59.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img02956,1562,Canon CR,59.0,,,,1,2,No,Brazil,2,2,2,0,0,1,1,1,1,0,1,0,0,0,1,0,0,0,0,0,0,0,Adequate
+img03000,1587,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03001,1587,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03002,1588,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03003,1588,NIKON NF5050,,,,,1,1,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img03037,1607,Canon CR,74.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03038,1607,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,1,1,1,1,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img03039,1608,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03040,1608,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03043,1610,Canon CR,69.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03044,1610,Canon CR,69.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03054,1616,Canon CR,90.0,0,,,1,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,Adequate
+img03071,1627,Canon CR,86.0,"cardiopathy, alzheimer",,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03076,1630,Canon CR,73.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03077,1630,Canon CR,73.0,hypertension,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img03134,1663,Canon CR,52.0,hypothyroidism,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03135,1663,Canon CR,52.0,hypothyroidism,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03177,1686,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03178,1686,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03191,1694,Canon CR,72.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,1,0,0,Adequate
+img03192,1694,Canon CR,72.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,Adequate
+img03195,1696,Canon CR,59.0,0,,,2,2,No,Brazil,2,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03196,1696,Canon CR,59.0,0,,,2,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img03197,1697,Canon CR,78.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03198,1697,Canon CR,78.0,0,,,2,1,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03249,1724,Canon CR,71.0,"diabetes, hypertension",3,no,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03250,1724,Canon CR,71.0,"diabetes, hypertension",3,no,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03278,1739,Canon CR,55.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03279,1739,Canon CR,55.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03302,1752,Canon CR,77.0,diabetes,20,no,1,1,yes,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03303,1752,Canon CR,77.0,diabetes,20,no,1,2,yes,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03314,1758,Canon CR,47.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,Adequate
+img03315,1758,Canon CR,47.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03316,1759,Canon CR,84.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03324,1764,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03325,1764,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img03343,1775,NIKON NF5050,,,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img03424,1818,Canon CR,83.0,,,,2,1,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img03425,1818,Canon CR,83.0,,,,2,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img03434,1823,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,4,4,2,1,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img03515,1870,Canon CR,65.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03516,1870,Canon CR,65.0,0,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03517,1871,Canon CR,67.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03518,1871,Canon CR,67.0,0,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,Adequate
+img03558,1892,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03559,1892,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03560,1893,Canon CR,31.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img03561,1893,Canon CR,31.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03622,1925,Canon CR,81.0,"diabetes, hypertension",17,yes,2,1,yes,Brazil,1,2,2,3,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03623,1925,Canon CR,81.0,"diabetes, hypertension",17,yes,2,2,yes,Brazil,1,2,2,3,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03643,1936,Canon CR,60.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03644,1936,Canon CR,60.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03665,1947,Canon CR,71.0,hypothyroidism,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img03666,1947,Canon CR,71.0,hypothyroidism,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03772,2003,Canon CR,66.0,"diabetes, hypertension",10,yes,1,1,yes,Brazil,1,1,2,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03773,2003,Canon CR,66.0,"diabetes, hypertension",10,yes,1,2,yes,Brazil,1,1,2,1,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03818,2028,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03819,2028,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03826,2032,Canon CR,30.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03827,2032,Canon CR,30.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03850,2044,Canon CR,56.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03851,2044,Canon CR,56.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,Adequate
+img03856,2047,Canon CR,25.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03857,2047,Canon CR,25.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03866,2052,Canon CR,27.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03867,2052,Canon CR,27.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03888,2063,Canon CR,35.0,chron disease,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03889,2063,Canon CR,35.0,chron disease,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03894,2066,Canon CR,38.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img03895,2066,Canon CR,38.0,hypertension,,,2,2,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img03915,2077,Canon CR,27.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03916,2077,Canon CR,27.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03956,2098,Canon CR,60.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03957,2098,Canon CR,60.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img03976,2109,Canon CR,45.0,,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img03977,2109,Canon CR,45.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04014,2130,NIKON NF5050,59.0,,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04049,2149,Canon CR,36.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04050,2149,Canon CR,36.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04078,2164,Canon CR,60.0,hypertension,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img04079,2164,Canon CR,60.0,hypertension,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img04145,2198,Canon CR,36.0,rhinitis,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04146,2198,Canon CR,36.0,rhinitis,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04155,2203,Canon CR,78.0,hypertension,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04156,2203,Canon CR,78.0,hypertension,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,1,0,Adequate
+img04159,2205,Canon CR,35.0,"diabetes, hypertension",1,,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04160,2205,Canon CR,35.0,"diabetes, hypertension",1,,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img04188,2220,Canon CR,55.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04189,2220,Canon CR,55.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04311,2287,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img04321,2293,Canon CR,37.0,,,,1,1,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img04322,2293,Canon CR,37.0,,,,1,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img04347,2307,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04348,2307,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04357,2312,Canon CR,40.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04358,2312,Canon CR,40.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04420,2345,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,Adequate
+img04462,2367,Canon CR,67.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04463,2367,Canon CR,67.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img04548,2410,Canon CR,71.0,hypertension,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04549,2410,Canon CR,71.0,hypertension,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04641,2458,NIKON NF5050,,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04642,2458,NIKON NF5050,,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04695,2485,Canon CR,16.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04696,2485,Canon CR,16.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04707,2491,Canon CR,49.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04708,2491,Canon CR,49.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04727,2501,Canon CR,77.0,0,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04728,2501,Canon CR,77.0,0,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img04777,2526,NIKON NF5050,,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,Adequate
+img04778,2526,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04791,2533,Canon CR,74.0,diabetes,,no,2,1,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img04792,2533,Canon CR,74.0,diabetes,,no,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img04905,2592,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img04906,2592,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img04913,2596,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Inadequate
+img04914,2596,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,1,1,1,1,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img04950,2615,Canon CR,52.0,hypothyroidism,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04951,2615,Canon CR,62.0,hypothyroidism,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img04983,2632,Canon CR,71.0,0,,,2,1,No,Brazil,2,2,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,1,Adequate
+img04984,2632,Canon CR,71.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05049,2666,Canon CR,49.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05050,2666,Canon CR,49.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05055,2669,Canon CR,50.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05056,2669,Canon CR,50.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05071,2677,Canon CR,33.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05072,2677,Canon CR,33.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05077,2680,Canon CR,27.0,hypothyroidism,,,2,1,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img05078,2680,Canon CR,27.0,hypothyroidism,,,2,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img05079,2681,Canon CR,32.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img05086,2685,Canon CR,34.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05087,2685,Canon CR,34.0,0,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05102,2693,Canon CR,58.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05103,2693,Canon CR,58.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05149,2718,Canon CR,41.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img05150,2718,Canon CR,41.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img05167,2727,Canon CR,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img05168,2727,Canon CR,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05247,2768,Canon CR,53.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05248,2768,Canon CR,53.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05251,2770,Canon CR,58.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05252,2770,Canon CR,58.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05287,2788,Canon CR,77.0,hypertension,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img05288,2788,Canon CR,77.0,hypertension,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img05307,2798,Canon CR,58.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05308,2798,Canon CR,58.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05396,2843,Canon CR,78.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img05397,2843,Canon CR,78.0,,,,2,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Inadequate
+img05403,2847,Canon CR,78.0,diabetes,,,1,1,yes,Brazil,2,1,2,0,0,2,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Inadequate
+img05404,2847,Canon CR,78.0,diabetes,,,1,2,yes,Brazil,2,2,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,Adequate
+img05419,2855,Canon CR,80.0,hypertension,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img05420,2855,Canon CR,80.0,hypertension,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img05435,2863,Canon CR,70.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05436,2863,Canon CR,70.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05516,2906,Canon CR,62.0,prostatic hyperplasia,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img05517,2906,Canon CR,62.0,prostatic hyperplasia,,,1,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Inadequate
+img05530,2913,Canon CR,72.0,diabetes,10,,2,1,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img05531,2913,Canon CR,72.0,diabetes,10,,2,2,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img05550,2923,Canon CR,33.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05551,2923,Canon CR,33.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05573,2935,Canon CR,35.0,0,,,2,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img05613,2956,Canon CR,77.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05614,2956,Canon CR,77.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img05650,2975,Canon CR,53.0,"diabetes, hypertension , dyslipidemia, obesity",,,2,1,yes,Brazil,2,2,1,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05651,2975,Canon CR,53.0,"diabetes, hypertension , dyslipidemia, obesity",,,2,2,yes,Brazil,2,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05711,3007,Canon CR,27.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05712,3007,Canon CR,27.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05713,3008,Canon CR,73.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05714,3008,Canon CR,73.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img05759,3031,Canon CR,72.0,0,,,2,1,No,Brazil,1,1,2,0,0,2,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Inadequate
+img05760,3031,Canon CR,72.0,0,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Adequate
+img05792,3048,Canon CR,69.0,"diabetes, hypertension",20,yes,2,1,yes,Brazil,1,1,2,2,2,1,1,2,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img05793,3048,Canon CR,69.0,"diabetes, hypertension",20,yes,2,2,yes,Brazil,1,1,2,1,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05794,3049,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05795,3049,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05816,3060,Canon CR,47.0,diabetes,,,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05817,3060,Canon CR,47.0,diabetes,,,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05844,3074,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05845,3074,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img05912,3110,Canon CR,33.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05913,3110,Canon CR,33.0,0,,,1,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img05929,3119,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,1,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05930,3119,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05991,3152,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img05992,3152,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06069,3193,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06070,3193,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06079,3198,Canon CR,71.0,hypertension,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06080,3198,Canon CR,71.0,hypertension,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06088,3203,Canon CR,67.0,"diabetes, hypertension",1,no,1,1,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06089,3203,Canon CR,67.0,"diabetes, hypertension",1,no,1,2,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06111,3215,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06112,3215,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06121,3220,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Adequate
+img06122,3220,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,Adequate
+img06146,3233,Canon CR,82.0,,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,1,0,Adequate
+img06147,3233,Canon CR,82.0,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,1,0,Adequate
+img06152,3236,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06157,3239,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06158,3239,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06159,3240,Canon CR,65.0,"diabetes, hypertension",8,,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img06160,3240,Canon CR,65.0,"diabetes, hypertension",8,,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img06177,3249,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06197,3260,Canon CR,50.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06198,3260,Canon CR,50.0,hypertension,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img06207,3265,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06299,3314,Canon CR,83.0,"diabetes, hypertension , hypothyroidism",5,no,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img06300,3314,Canon CR,83.0,"diabetes, hypertension , hypothyroidism",5,no,2,2,yes,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img06316,3323,Canon CR,56.0,0,,,1,1,No,Brazil,1,1,2,0,0,2,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img06317,3323,Canon CR,56.0,0,,,1,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06359,3345,Canon CR,51.0,"hypertension , hypercholesterolemia",,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06360,3345,Canon CR,51.0,"hypertension , hypercholesterolemia",,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06372,3352,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06373,3352,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06392,3362,Canon CR,40.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06393,3362,Canon CR,40.0,0,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06409,3371,Canon CR,64.0,hypertension,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img06410,3371,Canon CR,64.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06467,3401,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06468,3401,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06517,3426,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06544,3441,Canon CR,66.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06545,3441,Canon CR,66.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06556,3447,Canon CR,54.0,"diabetes, hypertension",5,no,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06557,3447,Canon CR,54.0,"diabetes, hypertension",5,no,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06558,3448,Canon CR,36.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06559,3448,Canon CR,36.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06562,3450,Canon CR,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06563,3450,Canon CR,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06633,3490,NIKON NF5050,71.0,"diabetes, hypertension",,,2,1,yes,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06634,3490,NIKON NF5050,71.0,"diabetes, hypertension",,,2,2,yes,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img06660,3504,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06661,3504,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img06687,3519,Canon CR,84.0,hypertension,,,2,1,No,Brazil,1,1,2,0,0,2,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06688,3519,Canon CR,84.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06731,3542,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06732,3542,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06788,3572,Canon CR,38.0,diabetes1,,,2,1,yes,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06789,3572,Canon CR,38.0,diabetes1,,,2,2,yes,Brazil,1,1,2,4,4,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06814,3585,Canon CR,42.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06815,3585,Canon CR,42.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img06846,3601,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06847,3601,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06898,3627,Canon CR,71.0,diabetes,15,no,2,1,yes,Brazil,1,1,2,1,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06899,3627,Canon CR,71.0,diabetes,15,no,2,2,yes,Brazil,1,1,2,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06944,3652,Canon CR,78.0,0,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img06945,3652,Canon CR,78.0,0,,,1,2,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06989,3677,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img06990,3677,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06997,3681,Canon CR,75.0,diabetes,7,,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img06998,3681,Canon CR,75.0,diabetes,7,,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img07051,3710,Canon CR,84.0,diabetes,3,no,2,1,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07052,3710,Canon CR,84.0,diabetes,3,no,2,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07073,3721,NIKON NF5050,52.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07074,3721,NIKON NF5050,52.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07091,3731,Canon CR,54.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07092,3731,Canon CR,54.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07099,3735,Canon CR,47.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07100,3735,Canon CR,47.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07202,3788,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img07203,3788,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07223,3799,Canon CR,94.0,"hypertension , hypothyroidism",,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,1,0,Adequate
+img07224,3799,Canon CR,94.0,"hypertension , hypothyroidism",,,2,2,No,Brazil,1,1,2,0,0,2,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Inadequate
+img07289,3833,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07290,3833,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07327,3852,Canon CR,41.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img07328,3852,Canon CR,41.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img07380,3879,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07381,3879,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07388,3883,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img07389,3883,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07511,3947,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07512,3947,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07520,3952,Canon CR,55.0,osteoporosis,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07521,3952,Canon CR,55.0,osteoporosis,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07562,3974,Canon CR,57.0,diabetes,10,no,2,1,yes,Brazil,1,1,2,1,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07563,3974,Canon CR,57.0,diabetes,10,no,2,2,yes,Brazil,1,1,2,1,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07566,3976,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Adequate
+img07567,3976,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img07570,3978,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img07738,4065,NIKON NF5050,,,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,1,0,Adequate
+img07739,4065,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,Adequate
+img07751,4072,Canon CR,59.0,"diabetes1, hypertension",19,yes,1,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img07752,4072,Canon CR,59.0,"diabetes1, hypertension",19,yes,1,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img07798,4097,Canon CR,74.0,"diabetes, prostatic hyperplasia, hypertension",,,1,2,yes,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img07842,4120,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07843,4120,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img07981,4192,Canon CR,34.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img07982,4192,Canon CR,34.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img07998,4201,Canon CR,68.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08001,4203,Canon CR,83.0,hypothyroidism,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08002,4203,Canon CR,83.0,hypothyroidism,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img08013,4209,Canon CR,65.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08014,4209,Canon CR,65.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08035,4220,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08036,4220,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08039,4222,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08040,4222,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08097,4251,Canon CR,62.0,diabetes,,no,1,1,yes,Brazil,1,1,2,4,4,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08098,4251,Canon CR,62.0,diabetes,,no,1,2,yes,Brazil,1,1,2,4,4,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08105,4255,Canon CR,52.0,diabetes,7,no,1,2,yes,Brazil,1,2,2,4,4,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08135,4271,Canon CR,27.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08136,4271,Canon CR,27.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08141,4274,Canon CR,68.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08142,4274,Canon CR,68.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08147,4277,Canon CR,50.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08148,4277,Canon CR,50.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img08205,4307,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img08206,4307,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08211,4310,Canon CR,55.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08212,4310,Canon CR,55.0,0,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img08241,4326,Canon CR,76.0,"hypertension , catheterism",,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08242,4326,Canon CR,76.0,"hypertension , catheterism",,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08249,4330,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08250,4330,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08336,4376,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08337,4376,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08369,4394,Canon CR,22.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08370,4394,Canon CR,22.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08403,4412,Canon CR,62.0,rheumatoid arthritis,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08404,4412,Canon CR,62.0,rheumatoid arthritis,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08424,4424,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08476,4454,Canon CR,77.0,"diabetes, hypertension , hypothyroidism",43,yes,2,1,yes,Brazil,1,1,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08477,4454,Canon CR,77.0,"diabetes, hypertension , hypothyroidism",43,yes,2,2,yes,Brazil,1,1,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08526,4480,Canon CR,79.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08527,4480,Canon CR,79.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08592,4514,Canon CR,6.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08593,4514,Canon CR,6.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08609,4523,Canon CR,70.0,diabetes,32,yes,2,2,yes,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08622,4531,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08623,4531,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08686,4565,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08687,4565,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08771,4608,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08772,4608,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08786,4616,Canon CR,53.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08787,4616,Canon CR,53.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08824,4636,Canon CR,47.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08825,4636,Canon CR,47.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08826,4637,Canon CR,69.0,"diabetes, hypertension",,,2,1,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08827,4637,Canon CR,69.0,"diabetes, hypertension",,,2,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08874,4662,Canon CR,31.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08875,4662,Canon CR,31.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08876,4663,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img08877,4663,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img08886,4668,Canon CR,81.0,"diabetes, hypertension",5,no,2,1,yes,Brazil,2,1,1,1,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08887,4668,Canon CR,81.0,"diabetes, hypertension",5,no,2,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08915,4683,Canon CR,66.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08916,4683,Canon CR,66.0,hypertension,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08919,4685,Canon CR,61.0,hypertension,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img08920,4685,Canon CR,61.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09033,4745,Canon CR,61.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09034,4745,Canon CR,61.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09071,4765,Canon CR,87.0,"diabetes, hypertension",40,yes,2,1,yes,Brazil,2,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,1,0,Adequate
+img09072,4765,Canon CR,87.0,"diabetes, hypertension",40,yes,2,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09098,4780,Canon CR,76.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09099,4780,Canon CR,76.0,0,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09151,4807,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09152,4807,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img09173,4818,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09174,4818,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09197,4831,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img09198,4831,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img09201,4833,NIKON NF5050,88.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img09202,4833,NIKON NF5050,88.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img09207,4836,Canon CR,72.0,"diabetes, hypertension",,,2,1,yes,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img09208,4836,Canon CR,72.0,"diabetes, hypertension",,,2,2,yes,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img09213,4839,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img09214,4839,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img09228,4847,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09229,4847,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img09268,4867,Canon CR,31.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09269,4867,Canon CR,31.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09276,4871,NIKON NF5050,44.0,"diabetes, hypertension",11,no,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09277,4871,NIKON NF5050,44.0,"diabetes, hypertension",11,no,1,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img09298,4883,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09299,4883,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img09347,4908,Canon CR,55.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09348,4908,Canon CR,55.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09363,4916,Canon CR,13.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09364,4916,Canon CR,13.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09393,4932,Canon CR,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img09394,4932,Canon CR,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img09404,4938,NIKON NF5050,87.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img09405,4938,NIKON NF5050,87.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img09410,4941,Canon CR,79.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img09466,4970,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09467,4970,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09487,4981,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09488,4981,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09532,5004,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09583,5031,Canon CR,58.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09584,5031,Canon CR,58.0,0,,,2,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,Adequate
+img09670,5076,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09671,5076,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09678,5080,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09679,5080,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09728,5107,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09729,5107,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img09734,5110,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09735,5110,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img09771,5131,Canon CR,32.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09772,5131,Canon CR,32.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09775,5133,Canon CR,61.0,"diabetes, hypertension",9,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09776,5133,Canon CR,61.0,"diabetes, hypertension",9,yes,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09830,5162,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img09831,5162,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img09896,5196,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Adequate
+img09897,5196,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,2,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Inadequate
+img10016,5258,Canon CR,77.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img10017,5258,Canon CR,77.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img10024,5262,Canon CR,23.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10025,5262,Canon CR,23.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10064,5283,Canon CR,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10065,5283,Canon CR,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10154,5330,Canon CR,70.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10155,5330,Canon CR,70.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10168,5337,Canon CR,81.0,"diabetes, hypertension",6,no,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,Adequate
+img10169,5337,Canon CR,81.0,"diabetes, hypertension",6,no,2,2,yes,Brazil,1,1,2,0,0,2,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Inadequate
+img10172,5339,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10173,5339,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img10180,5343,Canon CR,56.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10181,5343,Canon CR,56.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10206,5357,Canon CR,64.0,"diabetes, hypertension",15,yes,1,1,yes,Brazil,2,1,2,3,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10207,5357,Canon CR,64.0,"diabetes, hypertension",15,yes,1,2,yes,Brazil,2,1,2,3,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10212,5360,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img10213,5360,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10266,5387,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10267,5387,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,1,Adequate
+img10292,5400,NIKON NF5050,,,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,Adequate
+img10321,5416,Canon CR,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10322,5416,Canon CR,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10370,5441,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10453,5486,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10454,5486,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10457,5488,Canon CR,61.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10458,5488,Canon CR,61.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10498,5510,NIKON NF5050,,,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img10499,5510,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,Adequate
+img10522,5522,Canon CR,17.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10523,5522,Canon CR,17.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10551,5537,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10552,5537,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10615,5570,Canon CR,74.0,0,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Adequate
+img10616,5570,Canon CR,74.0,0,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Adequate
+img10626,5576,Canon CR,37.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10627,5576,Canon CR,37.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10707,5619,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10708,5619,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img10717,5624,NIKON NF5050,,,,,1,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img10718,5624,NIKON NF5050,,,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img10810,5672,Canon CR,58.0,0,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10811,5672,Canon CR,58.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img10832,5683,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,1,Adequate
+img10833,5683,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,1,Adequate
+img10912,5727,Canon CR,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img10913,5727,Canon CR,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img10935,5740,Canon CR,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img10936,5740,Canon CR,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img10943,5744,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img10944,5744,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11018,5784,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11019,5784,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11031,5791,Canon CR,83.0,cardiopathy,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11078,5819,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11079,5819,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img11128,5846,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,Adequate
+img11129,5846,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11166,5868,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img11167,5868,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11177,5874,Canon CR,69.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11178,5874,Canon CR,69.0,hypertension,,,1,2,No,Brazil,2,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img11205,5888,Canon CR,63.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11206,5888,Canon CR,63.0,hypertension,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11226,5901,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11227,5901,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11238,5907,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img11239,5907,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img11461,6028,Canon CR,77.0,"diabetes, hypertension",5,no,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11462,6028,Canon CR,77.0,"diabetes, hypertension",5,no,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11472,6034,Canon CR,56.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11473,6034,Canon CR,56.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11489,6043,NIKON NF5050,46.0,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11490,6043,NIKON NF5050,46.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img11495,6046,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11521,6062,Canon CR,61.0,"diabetes, hypertension",,no,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11522,6062,Canon CR,61.0,"diabetes, hypertension",,no,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11552,6078,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11553,6078,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11596,6101,Canon CR,58.0,diabetes,15,yes,1,1,yes,Brazil,1,2,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11603,6105,Canon CR,77.0,diabetes,8,,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Adequate
+img11604,6105,Canon CR,77.0,diabetes,8,,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Adequate
+img11605,6106,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img11606,6106,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img11625,6116,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11626,6116,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11628,6118,Canon CR,31.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11629,6118,Canon CR,31.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11651,6132,Canon CR,56.0,hypertension,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,Adequate
+img11668,6142,NIKON NF5050,,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11669,6142,NIKON NF5050,,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11757,6189,Canon CR,75.0,encephalic vascular accident,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,1,0,0,0,1,0,0,0,0,0,Adequate
+img11758,6189,Canon CR,75.0,encephalic vascular accident,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,Adequate
+img11765,6193,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11770,6196,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11771,6196,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11839,6231,Canon CR,44.0,hypertension,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11840,6231,Canon CR,44.0,hypertension,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11841,6232,Canon CR,34.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11842,6232,Canon CR,34.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11847,6235,Canon CR,39.0,"hypertension , kidney transplant",,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11848,6235,Canon CR,39.0,"hypertension , kidney transplant",,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11895,6260,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11896,6260,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11899,6262,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11900,6262,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11903,6264,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11904,6264,NIKON NF5050,,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img11926,6277,Canon CR,38.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11927,6277,Canon CR,38.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11948,6288,Canon CR,35.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img11949,6288,Canon CR,35.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11964,6296,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11965,6296,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11968,6298,Canon CR,39.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img11969,6298,Canon CR,39.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12025,6328,Canon CR,27.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12026,6328,Canon CR,27.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12041,6336,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12042,6336,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12084,6358,Canon CR,17.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12085,6358,Canon CR,17.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12137,6385,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12138,6385,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12150,6393,NIKON NF5050,72.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img12246,6445,Canon CR,44.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12247,6445,Canon CR,44.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12308,6478,Canon CR,80.0,"diabetes, hypertension",5,,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12309,6478,Canon CR,80.0,"diabetes, hypertension",5,,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12332,6492,Canon CR,80.0,"diabetes, hypertension",10,no,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12333,6492,Canon CR,80.0,"diabetes, hypertension",10,no,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12346,6499,Canon CR,87.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12347,6499,Canon CR,87.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12352,6502,Canon CR,59.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12353,6502,Canon CR,59.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12374,6514,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12375,6514,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12408,6532,Canon CR,78.0,"diabetes, hypertension , hypothyroidism, cardiopathy",25,yes,2,1,yes,Brazil,1,2,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12409,6532,Canon CR,78.0,"diabetes, hypertension , hypothyroidism, cardiopathy",25,yes,2,2,yes,Brazil,1,2,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12412,6534,Canon CR,67.0,"diabetes, hypertension",8,no,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img12413,6534,Canon CR,67.0,"diabetes, hypertension",8,no,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img12474,6565,Canon CR,32.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12475,6565,Canon CR,32.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12548,6603,Canon CR,8.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12549,6603,Canon CR,8.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12574,6616,Canon CR,31.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,Adequate
+img12575,6616,Canon CR,31.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12580,6620,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12581,6620,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img12626,6643,Canon CR,77.0,"diabetes, hypertension",25,no,1,1,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img12627,6643,Canon CR,77.0,"diabetes, hypertension",25,no,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12652,6656,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12653,6656,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12654,6657,Canon CR,36.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12655,6657,Canon CR,36.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12737,6700,Canon CR,76.0,"diabetes, hypertension",,,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12738,6700,Canon CR,76.0,"diabetes, hypertension",,,2,2,yes,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,Adequate
+img12757,6710,Canon CR,51.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12758,6710,Canon CR,51.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12785,6724,Canon CR,70.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12786,6724,Canon CR,70.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12787,6725,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12788,6725,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12833,6749,Canon CR,46.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12834,6749,Canon CR,46.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12933,6801,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Inadequate
+img12942,6807,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img12943,6807,NIKON NF5050,,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img12987,6831,Canon CR,60.0,,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img12988,6831,Canon CR,60.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13020,6849,Canon CR,55.0,0,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13021,6849,Canon CR,55.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13058,6869,Canon CR,63.0,"kidney transplant, hypertension , chronic kidney disease",,,1,1,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,1,0,0,0,0,Adequate
+img13059,6869,Canon CR,63.0,"kidney transplant, hypertension , chronic kidney disease",,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13071,6876,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13072,6876,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13120,6901,Canon CR,69.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13121,6901,Canon CR,69.0,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13205,6948,Canon CR,56.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13230,6963,NIKON NF5050,66.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13231,6963,NIKON NF5050,66.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13237,6967,Canon CR,49.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13238,6967,Canon CR,49.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13249,6973,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13253,6976,Canon CR,59.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13254,6976,Canon CR,59.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13283,6992,Canon CR,40.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13284,6992,Canon CR,40.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13291,6996,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img13292,6996,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img13311,7006,Canon CR,61.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13312,7006,Canon CR,61.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13360,7031,Canon CR,19.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13361,7031,Canon CR,19.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13371,7037,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13372,7037,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13390,7047,Canon CR,84.0,"diabetes, hypertension",1,no,1,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13391,7047,Canon CR,84.0,"diabetes, hypertension",1,no,1,2,yes,Brazil,1,1,1,0,0,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img13415,7060,Canon CR,82.0,hypertension,,,1,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13421,7064,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13422,7064,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13454,7081,Canon CR,75.0,"diabetes, hypertension",10,no,1,1,yes,Brazil,1,2,2,3,3,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13455,7081,Canon CR,75.0,"diabetes, hypertension",10,no,1,2,yes,Brazil,1,2,2,3,3,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13478,7094,Canon CR,67.0,0,,,1,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,1,0,Adequate
+img13479,7094,Canon CR,67.0,0,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13517,7114,Canon CR,51.0,,,,1,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13518,7114,Canon CR,51.0,,,,1,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13527,7119,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img13528,7119,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13548,7130,Canon CR,35.0,diabetes1,29,yes,1,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13549,7130,Canon CR,35.0,diabetes1,29,yes,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13564,7138,NIKON NF5050,,,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13565,7138,NIKON NF5050,,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13593,7153,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13594,7153,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13635,7174,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13636,7174,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13651,7182,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13652,7182,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13663,7188,Canon CR,57.0,hypertension,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img13664,7188,Canon CR,57.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img13665,7189,Canon CR,56.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13666,7189,Canon CR,56.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13756,7236,Canon CR,42.0,lymphoma,,,1,1,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img13757,7236,Canon CR,42.0,lymphoma,,,1,2,No,Brazil,1,2,1,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Adequate
+img13787,7252,Canon CR,42.0,0,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13788,7252,Canon CR,42.0,0,,,1,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13807,7262,Canon CR,47.0,,,,1,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13808,7262,Canon CR,47.0,,,,1,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13853,7285,NIKON NF5050,53.0,diabetes,30,,2,2,yes,Brazil,1,2,1,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13854,7285,NIKON NF5050,53.0,diabetes,30,,2,1,yes,Brazil,1,1,2,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13859,7288,Canon CR,63.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13860,7288,Canon CR,63.0,0,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img13863,7290,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13937,7328,Canon CR,60.0,"diabetes, hypertension",10,no,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img13938,7328,Canon CR,60.0,"diabetes, hypertension",10,no,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14005,7362,Canon CR,70.0,"sjogren, lupus",,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14006,7362,Canon CR,70.0,"sjogren, lupus",,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14019,7369,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14020,7369,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14029,7374,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14030,7374,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14049,7384,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img14050,7384,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img14052,7386,Canon CR,70.0,"diabetes, hypertension",10,no,2,1,yes,Brazil,1,1,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14053,7386,Canon CR,70.0,"diabetes, hypertension",10,no,2,2,yes,Brazil,1,2,2,1,2,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,Adequate
+img14062,7391,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14063,7391,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14076,7398,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img14077,7398,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14080,7400,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14081,7400,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14141,7431,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14142,7431,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14151,7436,Canon CR,77.0,"diabetes, hypertension , hypercholesterolemia",,yes,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14152,7437,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14153,7437,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img14154,7438,Canon CR,47.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14155,7438,Canon CR,47.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14231,7477,Canon CR,53.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14232,7477,Canon CR,53.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14267,7495,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14268,7495,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14271,7497,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14272,7497,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14307,7514,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14308,7514,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14384,7554,Canon CR,55.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14385,7554,Canon CR,55.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14390,7557,Canon CR,80.0,"diabetes, hypertension , hypercholesterolemia",2,no,2,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,Adequate
+img14391,7557,Canon CR,80.0,"diabetes, hypertension , hypercholesterolemia",2,no,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0,Adequate
+img14438,7581,Canon CR,65.0,"diabetes, hypertension",20,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14439,7581,Canon CR,65.0,"diabetes, hypertension",20,yes,2,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,Adequate
+img14496,7610,Canon CR,,,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,1,0,Adequate
+img14497,7610,Canon CR,,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,Adequate
+img14534,7629,Canon CR,65.0,"diabetes, hypertension",,yes,2,1,yes,Brazil,1,2,2,2,2,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14535,7629,Canon CR,65.0,"diabetes, hypertension",,yes,2,2,yes,Brazil,1,1,2,1,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14563,7644,Canon CR,,,,,2,1,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,Adequate
+img14564,7644,Canon CR,,,,,2,2,No,Brazil,2,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,Adequate
+img14577,7651,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14578,7651,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14611,7668,NIKON NF5050,56.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14612,7668,NIKON NF5050,56.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14621,7673,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14622,7673,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14665,7695,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14666,7695,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14691,7708,Canon CR,72.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14692,7708,Canon CR,72.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14735,7731,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14736,7731,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14811,7770,Canon CR,79.0,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img14812,7770,Canon CR,,,,,2,2,No,Brazil,1,2,2,0,0,1,1,1,1,0,0,0,0,0,1,0,0,0,0,1,0,1,Adequate
+img14829,7779,Canon CR,70.0,"hypertension , cardiopathy",,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14830,7779,Canon CR,70.0,"hypertension , cardiopathy",,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14872,7802,Canon CR,62.0,hypertension,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img14873,7802,Canon CR,62.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img14919,7825,Canon CR,65.0,"diabetes, hypertension",30,yes,2,1,yes,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14920,7825,Canon CR,65.0,"diabetes, hypertension",30,yes,2,2,yes,Brazil,1,1,2,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14961,7846,Canon CR,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img14962,7846,Canon CR,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14963,7847,Canon CR,59.0,0,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14964,7847,Canon CR,59.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img14999,7866,Canon CR,68.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15000,7866,Canon CR,68.0,hypertension,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15041,7887,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15042,7887,NIKON NF5050,,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15064,7899,Canon CR,64.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img15065,7899,Canon CR,64.0,0,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img15176,7958,Canon CR,56.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15177,7958,Canon CR,56.0,0,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15194,7967,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15195,7967,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15207,7974,Canon CR,66.0,hypertension,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15208,7974,Canon CR,66.0,hypertension,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15242,7993,Canon CR,63.0,"diabetes, hypertension , cardiac insufficiency",20,no,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15243,7993,Canon CR,63.0,"diabetes, hypertension , cardiac insufficiency",20,no,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15340,8045,Canon CR,64.0,0,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15341,8045,Canon CR,64.0,0,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15358,8054,Canon CR,83.0,diabetes,,,2,1,yes,Brazil,1,1,2,3,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15495,8125,Canon CR,57.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15496,8125,Canon CR,57.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15608,8183,Canon CR,65.0,hypertension,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15609,8183,Canon CR,65.0,hypertension,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15615,8187,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15616,8187,NIKON NF5050,,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img15654,8207,Canon CR,66.0,"diabetes, hypertension",4,no,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15691,8226,NIKON NF5050,,,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img15692,8226,NIKON NF5050,,,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img15730,8247,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15731,8247,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15769,8269,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15770,8269,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15829,8300,Canon CR,15.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15830,8300,Canon CR,15.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15874,8323,Canon CR,63.0,vasculitis,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15875,8323,Canon CR,63.0,vasculitis,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15937,8356,Canon CR,70.0,,,,2,1,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15938,8356,Canon CR,70.0,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15956,8366,Canon CR,76.0,0,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img15957,8366,Canon CR,76.0,0,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Adequate
+img15994,8386,Canon CR,70.0,"diabetes, hypertension , encephalic vascular accident",,,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img15995,8386,Canon CR,70.0,"diabetes, hypertension , encephalic vascular accident",,,2,2,yes,Brazil,1,2,1,4,4,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,Adequate
+img16005,8392,Canon CR,54.0,hypertension,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img16006,8392,Canon CR,54.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img16007,8393,NIKON NF5050,,,,,2,2,No,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img16008,8393,NIKON NF5050,,,,,2,1,No,Brazil,1,1,1,0,0,1,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Inadequate
+img16010,8395,Canon CR,54.0,,,,2,1,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img16011,8395,Canon CR,54.0,,,,2,2,No,Brazil,2,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,Adequate
+img16148,8465,Canon CR,64.0,hypertension,,,2,1,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img16149,8465,Canon CR,64.0,hypertension,,,2,2,No,Brazil,1,1,2,0,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Adequate
+img16203,8493,Canon CR,14.0,diabetes1,14,yes,1,1,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img16204,8493,Canon CR,14.0,diabetes1,14,yes,1,2,yes,Brazil,1,1,2,0,0,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0,Adequate
+img16247,8515,Canon CR,20.0,diabetes1,3,yes,2,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img16248,8515,Canon CR,20.0,diabetes1,3,yes,2,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img16249,8516,Canon CR,16.0,diabetes1,4,yes,1,1,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
+img16250,8516,Canon CR,16.0,diabetes1,4,yes,1,2,yes,Brazil,1,1,1,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Adequate
