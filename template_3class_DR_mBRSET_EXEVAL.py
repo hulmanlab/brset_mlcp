@@ -217,8 +217,6 @@ for batch in test_dataloader:
 
 # %%
 # Create a DataLoader to generate embeddings
-#model = get_retfound(weights='/home/opc/FoundationalRetina/Weights/RETFound_cfp_weights.pth', num_classes=3)
-# Create a DataLoader to generate embeddings
 backbone_model = FoundationalCVModel(backbone=BACKBONE, mode=MODE, weights=weights)
 model = FoundationalCVModelWithClassifier(backbone_model, hidden=HIDDEN, num_classes=num_classes, mode=MODE, backbone_mode=backbone_mode)
 model.to(device)
@@ -228,50 +226,19 @@ if torch.cuda.device_count() > 1:
     print("Using", torch.cuda.device_count(), "GPUs!")
     model = nn.DataParallel(model, [0,1])
 
-# %% [markdown]
-# ### Training:
-
-# %%
-# if LOSS == 'focal_loss':
-#     class_distribution = train_dataloader.dataset.labels.sum(axis=0)
-#     print(f'Class distribution: {class_distribution}')
-#     class_dis = np.array(class_distribution)
-#     class_weights =1-class_dis/np.sum(class_dis)
-#     weights = torch.tensor(class_weights).to(device)
-#     #criterion = FocalLoss()  # Focal Loss
-#     criterion = FocalLoss(gamma=2, alpha=weights)
-# else:
-#     # Assuming train_loader.dataset.labels is a one-hot representation
-#     class_indices = np.argmax(train_dataloader.dataset.labels, axis=1)
-
-#     # Compute class weights using class indices
-#     class_weights = compute_class_weight('balanced', classes=np.unique(class_indices), y=class_indices)
-#     class_weights = torch.tensor(class_weights, dtype=torch.float32)
-#     criterion = nn.CrossEntropyLoss(weight=class_weights).to(device)
-#     #criterion = nn.BCEWithLogitsLoss() # Binary Cross-Entropy Loss
-
-# if OPTIMIZER == 'adam':
-#     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-# elif OPTIMIZER == 'adamw':
-#     optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
-# else:
-#     optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
-
-# %%
-# model = train(model, train_dataloader, val_dataloader, criterion, optimizer, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class{"_grouped" if GROUP_STRATIFY == True else ""}_{LABEL}')
 
 # %% [markdown]
 # ### Test
 
 # %%
-path = f'/home/livieymli/brset_analysis/BRSET/models/FT_{BACKBONE}_{backbone_mode}_3class{"_grouped" if GROUP_STRATIFY == True else ""}_DR_ICDR_best.pth'
+path = f'/home/livieymli/brset_analysis/BRSET/models/FT_{BACKBONE}_{backbone_mode}_3class_DR_ICDR_best.pth'
 net = torch.load(path, map_location=torch.device(device))
 if device.type == 'cpu':
     net = {k.replace('module.', ''): v for k, v in net.items()}
     # net = {k.replace('backbone.', ''): v for k, v in net.items()}
 model.load_state_dict(net, strict=False)
 #%%
-test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'{BACKBONE}_{backbone_mode}_3class_mBRSET_EXEVAL', save=True)
+test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'temp_{BACKBONE}_{backbone_mode}_3class_mBRSET_EXEVAL', save=True)
 
 # %% [markdown]
 # ### Image quality assessment

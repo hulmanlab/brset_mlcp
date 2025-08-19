@@ -28,7 +28,7 @@ def get_saliency_map(model, input_image):
     #saliency_map = input_image.grad.data.abs().max(1)[0]
     return saliency_map
 
-def test_model(y_test, y_pred, y_prob=None, save_prob = False, prob_name = None):
+def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, prob_name = None):
     """
     Evaluates the model on the training and test data respectively
     1. Predictions on test data
@@ -46,8 +46,9 @@ def test_model(y_test, y_pred, y_prob=None, save_prob = False, prob_name = None)
         if len(y_prob.shape) > 1:
             results_df = pd.DataFrame({f'y_test_{i}': y_test[:, i] for i in range(y_test.shape[1])})
             results_df = pd.concat([results_df, pd.DataFrame({f'y_prob_{i}': y_prob[:, i] for i in range(y_prob.shape[1])})], axis=1)
+            results_df = pd.concat([results_df, pd.DataFrame({'y_camera': y_camera})], axis=1)
         else:
-            results_df = pd.DataFrame({'y_test': y_test[:,1], 'y_pred': y_prob})
+            results_df = pd.DataFrame({'y_test': y_test[:,1], 'y_pred': y_prob, 'y_camera': y_camera})
         
         results_df.to_csv(f'output_predicted_probabilities/y_{prob_name}.csv', index=False)
         print('saved')
@@ -147,7 +148,6 @@ def test_model(y_test, y_pred, y_prob=None, save_prob = False, prob_name = None)
     # print classification report
     print(cr)
     
-    # TODO use y_prob and y_test[:, 1] for calibration
     
     mcc = matthews_corrcoef(y_test, y_pred)
     if len(np.unique(y_test)) == 1:
@@ -187,9 +187,9 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
     eval_images_per_class = {i: [] for i in range(num_classes)}
     
     with torch.no_grad():
-        y_true, y_pred = [], []
+        y_true, y_pred, y_camera = [], [], []
         for batch in tqdm(test_dataloader, total=len(test_dataloader)):
-            image, labels =  batch['image'].to(device), batch['labels'].to(device)
+            image, labels, camera =  batch['image'].to(device), batch['labels'].to(device), batch['camera'].to(device)
 
             outputs = model(image)
 
@@ -200,6 +200,7 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
 
             y_true.extend(labels.cpu().numpy())
             y_pred.extend(preds.cpu().numpy())
+            y_camera.extend(camera.cpu().numpy())
 
             # Get 5 images per class for saliency maps
             for i in range(num_classes):
@@ -222,7 +223,7 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
         if (output_size == 2):
             y_pred = y_pred[:, 1]
         
-        test_model(y_true, y_pred_one_hot, y_pred, save_prob, prob_name)
+        test_model(y_true, y_pred_one_hot, y_pred, y_camera, save_prob, prob_name)
     
     if saliency:
         if save:

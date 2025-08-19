@@ -1,0 +1,2 @@
+BRSET: https://physionet.org/content/brazilian-ophthalmological/1.0.1/
+mBRSET: https://physionet.org/content/mbrset/1.0/

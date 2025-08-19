@@ -1,11 +1,12 @@
 # All the images
 *.jpg
 *logo/
+*.out
 Embeddings/*
 Models/*
 Weights/*
 saliency_maps/*
-*.sh 
+
 *.pt
 *.pth
 output_predicted_probabilities/*

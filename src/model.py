@@ -137,6 +137,7 @@ class FoundationalCVModel(torch.nn.Module):
             self.backbone = ConvNextV2ForImageClassification.from_pretrained(backbone_path[backbone])
             self.backbone = nn.Sequential(*list(self.backbone.children())[:-1])
             
+            # model = convnextv2.__dict__[args.model]
 
         elif backbone == 'convnext_tiny':
             # Get the backbone

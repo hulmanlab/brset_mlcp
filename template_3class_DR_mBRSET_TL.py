@@ -127,34 +127,8 @@ df_train[LABEL] = df_train[LABEL].apply(lambda x: 'Normal' if x == 0 else ('Non-
 df_test[LABEL] = df_test[LABEL].apply(lambda x: 'Normal' if x == 0 else ('Non-proliferative' if x in [1, 2, 3] else 'Proliferative'))
 df_val[LABEL] = df_val[LABEL].apply(lambda x: 'Normal' if x == 0 else ('Non-proliferative' if x in [1, 2, 3] else 'Proliferative'))
 
-# %%
-def stratify_group(df, X_col, y_col, group_col, n_splits=1, shuffle = False, random_state=42):
-    if shuffle == False:
-        random_state = None
-    skf = StratifiedGroupKFold(n_splits=n_splits, shuffle=shuffle, random_state=random_state)
-    X = df[X_col].values
-    y = df[y_col].values
-    groups = df[group_col].values
-    for train_index, test_index in skf.split(X, y, groups):
-        train_data = df.iloc[train_index]
-        test_data = df.iloc[test_index]
-        break
 
-    print(f"Train data shape: {train_data.shape}")
-    print(f"Test data shape: {test_data.shape}")
-
-    plt.figure(figsize=(10, 5))
-    plt.subplot(1, 2, 1)
-    plot_labels_distribution(train_data, y_col, title='Train Label Distribution')
-    plt.subplot(1, 2, 2)
-    plot_labels_distribution(test_data, y_col, title='Test Label Distribution')
-    plt.show()
-    return train_data, test_data
-# %% [markdown]
-# ### Dataloaders
-
-# %%
-# Train the one hot encoder on the train set and get the labels for the test and validation sets:
+# %% Train the one hot encoder on the train set and get the labels for the test and validation sets:
 train_labels, mlb, train_columns = process_labels(df_train, col=LABEL)
 
 # %%
@@ -287,7 +261,7 @@ else:
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
 
 # %%
-model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET')
+# model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET')
 
 # %% [markdown]
 # ### Test
@@ -300,7 +274,7 @@ if device.type == 'cpu':
     # net = {k.replace('backbone.', ''): v for k, v in net.items()}
 model.load_state_dict(net, strict=False)
 #%%
-test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'{BACKBONE}_{backbone_mode}_3class_mBRSET_TL')
+test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'temp_{BACKBONE}_{backbone_mode}_3class_mBRSET_TL')
 
 # %% [markdown]
 # ### Image quality assessment

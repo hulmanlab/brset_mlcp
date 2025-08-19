@@ -261,6 +261,10 @@ class BRSETDataset(Dataset):
 
         # Images
         self.image_data = df[image_cols].values
+        if 'camera' in df.columns:
+            self.camera = df['camera'].values
+        else:
+            self.camera = np.array([3] * len(df))
         self.images_dir = images_dir
         self.shape = shape
         self.transform = transform or transforms.Compose([
@@ -282,7 +286,6 @@ class BRSETDataset(Dataset):
         return len(self.labels)
 
     def __getitem__(self, idx):
-
         # Images:
         img_path = self.image_data[idx]
 
@@ -290,10 +293,81 @@ class BRSETDataset(Dataset):
         img = self.transform(img)
 
         return {
+            # 'image_id' : self.image_data[idx],
+            'camera': self.camera[idx],
             'image': torch.FloatTensor(img),
             'labels': torch.FloatTensor(self.labels[idx])
         }
         
+
+class BRSET_mBRSETDataset(Dataset):
+    """
+    Custom Dataset with combination of BRSET and mBRSET datasets for training.
+
+    Args:
+    - df (pd.DataFrame): The DataFrame containing the dataset.
+    - image_cols (str): Column name containing the path to the images.
+    - label_col (str): Column name containing labels.
+    - mlb (sklearn.preprocessing.MultiLabelBinarizer): MultiLabelBinarizer object.
+    - train_columns (list): List of columns from the training set.
+
+    Attributes:
+    - image_data (np.ndarray): Array of image data.
+    - mlb (sklearn.preprocessing.MultiLabelBinarizer): MultiLabelBinarizer object.
+    - train_columns (list): List of columns from the training set.
+    - labels (np.ndarray): Array of one-hot encoded labels.
+
+    Methods:
+    - __len__(): Returns the length of the dataset.
+    - __getitem__(idx): Returns a dictionary with 'text', 'image', and 'labels'.
+
+    Example:
+    dataset = BRSETDataset(df, image_cols='image1', label_col='answer', mlb=mlb, train_columns=train_columns)
+    """
+    def __init__(self, df, image_cols, images_dir, label_col, mlb, train_columns,
+                 shape=(224, 224), transform=None):
+
+        # Images
+        self.images_path = df[image_cols].values
+        self.images_dir = images_dir
+        # Camera
+        self.camera = df['camera'].values
+        # Labels
+        self.mlb = mlb
+        self.train_columns = train_columns
+        self.labels = process_labels(df, col=label_col, mlb=mlb, train_columns=train_columns).values
+        
+
+        self.shape = shape
+        self.transform = transform or transforms.Compose([
+            transforms.Resize(self.shape),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+
+        #print(self.labels.shape)
+        if len(self.labels.shape) == 1:
+            self.labels = np.expand_dims(self.labels, axis=1)
+
+
+    def __len__(self):
+        return len(self.labels)
+
+    def __getitem__(self, idx):
+        # Images:
+        img_path = self.images_path[idx]
+        try:
+            img = Image.open(os.path.join(self.images_dir, str(img_path) + '.jpg') ).convert("RGB")
+        except Exception as e:
+            print(f"Failed to load image: {img_path}, Error: {e}")
+        img = self.transform(img)
+
+        return {
+            # 'image_id' : self.image_data[idx],
+            'camera': self.camera[idx],
+            'image': torch.FloatTensor(img),
+            'labels': torch.FloatTensor(self.labels[idx])
+        }
 
 class SSLDataset(Dataset):
 

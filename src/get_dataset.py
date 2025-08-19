@@ -134,7 +134,7 @@ def get_dataset(data_dir, download=False, info=False, name='BRSET'):
               ]
         # Drop rows where 'DR_ICDR' is empty
         df.dropna(subset=['DR_ICDR'], inplace=True)
-        
+        df['normality'] = df.apply(check_columns, args=(columns,),  axis=1)
     elif name == 'mBRSET':
         columns = ['oraltreatment_dm', 'systemic_hypertension', 'insurance',
                    'educational_level', 'alcohol_consumption', 'smoking', 'obesity',
@@ -142,9 +142,12 @@ def get_dataset(data_dir, download=False, info=False, name='BRSET'):
                    'neuropathy', 'diabetic_foot', 'file', 'laterality', 'final_artifacts',
                    'final_quality', 'final_icdr', 'final_edema']
         df.dropna(subset=['final_icdr'], inplace=True)
-        
+        df['normality'] = df.apply(check_columns, args=(columns,),  axis=1)
     
-    df['normality'] = df.apply(check_columns, args=(columns,),  axis=1)
+    else:
+        columns = ['file_path', 'label','camera']
+        df.dropna(subset=['label'], inplace=True)
+        df['normality'] = df.apply(check_columns, args=(columns,),  axis=1)
 
     return df
 
