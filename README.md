@@ -1,7 +1,3 @@
-Great thanks to Luis Nakayama for the source code, https://github.com/luisnakayama/BRSET
-Adjustments for local application has been made.   
-
-Here’s a structured draft of your README focusing on the usage section:
 
 ---
 
@@ -40,6 +36,8 @@ In this study we used two datasets BRSET, A Brazilian Multilabel Ophthalmologica
     * Exp 3. template_3class_DR_mBRSET_TL.py
 * Training on the GPU cluster: Use bash scripts in the `sbash` folder to run jobs on a cluster.
 
+Great thanks to Luis Nakayama for the source code, https://github.com/luisnakayama/BRSET
+Adjustments for local application has been made.   
 
 ### 4. Models and Outputs
 
@@ -60,3 +58,16 @@ In this study we used two datasets BRSET, A Brazilian Multilabel Ophthalmologica
   * Distribution of predicted probabilities
 
 ---
+## Computational setup
+### 1. Packages
+We used Python (v3.12.5) and PyTorch (v2.5.0) for model training. Pre-trained model weights were loaded from the models’ official GitHub repositories.[DINOv2](https://github.com/facebookresearch/dinov2), [RETFound](https://github.com/rmaphoh/RETFound/tree/main), [VisionFM](https://github.com/ABILab-CUHK/VisionFM)
+AUROC was computed with the roc_auc_score from scikit-learn (v1.7.1). ECE was computed using the MulticlassCalibrationError from torchmetrics (v1.8.1). 
+
+For further performance evaluation and visualization, we used R (v4.4.2). The PDI was computed using the [mcca (v0.7.0)](https://cran.r-project.org/web/packages/mcca/index.html) package. The calibration curves were plotted using [CalibrationCurves (v2.0.4)](https://cran.r-project.org/web/packages/CalibrationCurves/index.html), as well as the calculation of calibration-in-the-large and calibration slope. The Brier score was calculated under a multiclass framework using the mbrier function developed by Van Calster et al.(https://github.com/benvancalster/OrdinalCalibration) Confidence intervals (95%) for AUROC, PDI, and ECE were estimated using 1,000 bootstrap samples of the test sets.
+
+
+### 2. Hardware
+The analyses were performed on a GPU cluster node with the following specifications: 16 GB of RAM, 16 CPU cores, and 2 GPUs. Jobs were run on the gpu partition of the cluster with a maximum runtime of 6 hours.
+
+---
+
