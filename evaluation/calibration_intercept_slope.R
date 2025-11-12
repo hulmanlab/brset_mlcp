@@ -10,7 +10,7 @@ gc()
 # /3class_prob/BRSET_TL
 # ^y.*\\.csv
 
-prob_root<-"/home/livieymli/brset_analysis/BRSET/output_predicted_probabilities/mBRSET_EXEVAL"
+prob_root <- file.path(getwd(), "output", "predicted_probabilities", "mBRSET_EXEVAL")
 setwd(prob_root)
 files <- list.files(prob_root)
 files <- sort(files)

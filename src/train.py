@@ -6,7 +6,7 @@ from tqdm import tqdm
 from sklearn.metrics import f1_score
 
 
-def train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler = None, num_epochs=50, backbone='Retina', save=False, device='cpu', patience=7):
+def train(model, train_dataloader, val_dataloader, criterion, optimizer, ppath, scheduler = None, num_epochs=50, backbone='Retina', save=False, device='cpu', patience=7):
     model.to(device)
 
     binary = True if train_dataloader.dataset.labels.shape[1] == 1 else False
@@ -102,8 +102,8 @@ def train(model, train_dataloader, val_dataloader, criterion, optimizer, schedul
         model.load_state_dict(best_model_info['state_dict'])
 
     if save:
-        os.makedirs('/home/livieymli/brset_analysis/BRSET/models', exist_ok=True)
+        os.makedirs(os.path.join(ppath, 'output/models'), exist_ok=True)
         model.load_state_dict(best_model_info['state_dict'])
-        torch.save(model.state_dict(), f'/home/livieymli/brset_analysis/BRSET/models/FT_{backbone}_best.pth')
+        torch.save(model.state_dict(), os.path.join(ppath, f'output/models/FT_{backbone}_best.pth'))
 
     return model

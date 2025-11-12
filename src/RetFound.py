@@ -159,13 +159,13 @@ def get_retfound(weights=None, num_classes=3, backbone=False):
         drop_path_rate=0.2,
         global_pool=True
     )
-
-    
     if not weights:
         download_weights = input("Do you want to download the pretrained weights? (y/n): ")
         if download_weights in ['y', 'Y', 'yes', 'Yes', 'YES']:
             # download RETFound weights
-            output_file = '/home/livieymli/brset_analysis/BRSET/src/Weights/RETFound_cfp_weights.pth'
+            CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+            PARENT_DIR = os.path.dirname(CURRENT_DIR)
+            output_file = os.path.join(PARENT_DIR, 'Weights/RETFound_cfp_weights.pth')
             file_url = 'https://drive.google.com/uc?id=1l62zbWUFTlp214SvK6eMwPQZAzcwoeBE'
             # Create the output directory if it doesn't exist
             os.makedirs(os.path.dirname(output_file), exist_ok=True)

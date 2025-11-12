@@ -41,8 +41,8 @@ Adjustments for local application has been made.
 
 ### 4. Models and Outputs
 
-* **Models:** Saved in `models/` after fine-tuning.
-* **Output predicted probabilities:** Stored in `output_predicted_probabilities/`, organized by experiment, including analysis results.
+* **Models:** Saved in `output/models/` after fine-tuning.
+* **Output predicted probabilities:** Stored in `output/predicted_probabilities/`, organized by experiment, including analysis results.
 
 ### 5. Evaluation
 
@@ -70,4 +70,41 @@ For further performance evaluation and visualization, we used R (v4.4.2). The PD
 The analyses were performed on a GPU cluster node with the following specifications: 16 GB of RAM, 16 CPU cores, and 2 GPUs. Jobs were run on the gpu partition of the cluster with a maximum runtime of 6 hours.
 
 ---
+### 3. How to run
+#### 1. On your local machine
+Make sure there's Python installed. Install the required packages using requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
+Execute the script :
+
+```bash
+python template_3class_DR.py -b convnextv2_large -bm fine_tune
+```
+
+#### 2. On a SLURM Cluster (with GPU)
+
+```bash
+#!/bin/bash
+#SBATCH --mem 16g
+#SBATCH -c 32
+#SBATCH --partition gpu
+#SBATCH --gres=gpu:2
+#SBATCH --time 6:00:00
+cd <dir>/BRSET
+python template_3class_DR.py -b convnextv2_large -bm fine_tune
+```
+
+#### 3. On a SLURM Cluster (without GPU)
+
+```bash
+#!/bin/bash
+#SBATCH --mem 16g
+#SBATCH -c 32
+#SBATCH --time 16:00:00
+cd <dir>/BRSET
+python template_3class_DR.py -b convnextv2_large -bm fine_tune
+```
 

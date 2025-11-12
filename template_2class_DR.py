@@ -44,7 +44,7 @@ if reproduce:
     print(f'Reproduce: {reproduce}')
 # %%
 # Constants:
-DATASET = '/home/livieymli/brset_analysis/BRSET'
+DATASET = os.path.dirname(os.path.realpath(__name__))
 DOWNLOAD = False
 SHAPE = (224, 224)
 IMAGES = os.path.join(DATASET, 'data/fundus_photos/')
@@ -86,13 +86,13 @@ NORM_STD = None # [0.229, 0.224, 0.225]
 # BACKBONE = 'visionfm'
 
 if BACKBONE == 'retfound':
-    weights = '/home/livieymli/brset_analysis/BRSET/src/Weights/RETFound_cfp_weights.pth'
+    weights = os.path.join(DATASET, 'src/Weights/RETFound_cfp_weights.pth')
 elif BACKBONE == 'visionfm':
     weights = {
         'arch' : 'vit_base',
         'image_size' : 224,
         'patch_size' : 16,
-        'weights' : '/home/livieymli/brset_analysis/BRSET/src/Weights/VFM_Fundus_weights.pth'
+        'weights' : os.path.join(DATASET, 'src/Weights/VFM_Fundus_weights.pth')
     }   
 else:
     weights = None
@@ -305,13 +305,13 @@ else:
 
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
 # %%
-model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_binary{"_reproduce" if reproduce == True else ""}_{LABEL}')
+model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, ppath=DATASET, backbone=f'{BACKBONE}_{backbone_mode}_binary{"_reproduce" if reproduce == True else ""}_{LABEL}')
 
 # %% [markdown]
 # ### Test
 
 # %%
-path = f'/home/livieymli/brset_analysis/BRSET/models/FT_{BACKBONE}_{backbone_mode}_binary_{LABEL}_best.pth'
+path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_binary_{LABEL}_best.pth')
 net = torch.load(path, map_location=torch.device(device))
 if device.type == 'cpu':
     net = {k.replace('module.', ''): v for k, v in net.items()}
@@ -320,7 +320,7 @@ model.load_state_dict(net, strict=False)
 
 
 # %%
-test(model, test_dataloader, saliency=True, device=device, save_prob=True,prob_name=f'{BACKBONE}_{backbone_mode}_binary{"_reproduce" if reproduce == True else ""}')
+test(model, test_dataloader, saliency=True, device=device, save_prob=True,prob_name=f'{BACKBONE}_{backbone_mode}_binary')
 
 # %% [markdown]
 # ### Image quality assessment

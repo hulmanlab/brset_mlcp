@@ -41,7 +41,7 @@ print(f"Backbone: {BACKBONE}")
 print(f"Backbone mode: {backbone_mode}")
 # %%
 # Constants:
-DATASET = '/home/livieymli/brset_analysis/mBRSET'
+DATASET = os.path.dirname(os.path.realpath(__name__))
 
 LABELS_PATH = os.path.join(DATASET, 'data/labels_mbrset.csv')
 LABELS_PATH_TRAIN = os.path.join(DATASET, 'data/train_mbrset_nooverlap.csv')
@@ -76,14 +76,14 @@ NORM_STD = None # [0.229, 0.224, 0.225]
 # BACKBONE = 'visionfm'
 
 if BACKBONE == 'retfound':
-    weights = '/home/livieymli/brset_analysis/BRSET/src/Weights/RETFound_cfp_weights.pth'
+    weights = os.path.join(DATASET, 'src/Weights/RETFound_cfp_weights.pth')
 
 elif BACKBONE == 'visionfm':
     weights = {
         'arch' : 'vit_base',
         'image_size' : 224,
         'patch_size' : 16,
-        'weights' : '/home/livieymli/brset_analysis/BRSET/src/Weights/VFM_Fundus_weights.pth'
+        'weights' : os.path.join(DATASET, 'src/Weights/VFM_Fundus_weights.pth')
     }   
 else:
     weights = None
@@ -222,7 +222,7 @@ if torch.cuda.device_count() > 1:
     model = nn.DataParallel(model, [0,1])
 
 #%% Load the best model weights
-path = f'/home/livieymli/brset_analysis/BRSET/models/FT_{BACKBONE}_{backbone_mode}_3class_DR_ICDR_best.pth'
+path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_3class_DR_ICDR_best.pth')
 net = torch.load(path, map_location=torch.device(device))
 if device.type == 'cpu':
     net = {k.replace('module.', ''): v for k, v in net.items()}
@@ -261,13 +261,13 @@ else:
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
 
 # %%
-# model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET')
+model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, ppath=DATASET, backbone=f'{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET')
 
 # %% [markdown]
 # ### Test
 
 # %%
-path = f'/home/livieymli/brset_analysis/BRSET/models/FT_{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET_best.pth'
+path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET_best.pth')
 net = torch.load(path, map_location=torch.device(device))
 if device.type == 'cpu':
     net = {k.replace('module.', ''): v for k, v in net.items()}

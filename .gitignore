@@ -3,13 +3,13 @@
 *logo/
 *.out
 Embeddings/*
-Models/*
 Weights/*
-saliency_maps/*
-
+clean.py
+*.sh
 *.pt
 *.pth
-output_predicted_probabilities/*
+*.ipynb
+output/*
 
 # macOS system files
 .DS_Store

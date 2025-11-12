@@ -47,8 +47,8 @@ TEST = args.test
 print(f"Using backbone: {BACKBONE}, backbone_mode: {backbone_mode}, reproduce: {reproduce}, test={TEST}")
 # %%
 # Constants:
-DATASET = '/home/livieymli/brset_analysis/BRSET'
-DATASET_mBRSET = '/home/livieymli/brset_analysis/mBRSET'
+DATASET = os.path.dirname(os.path.realpath(__name__))
+
 
 # LABELS_PATH = os.path.join(DATASET, 'data/labels_brset.csv')
 LABELS_PATH_TRAIN = os.path.join(DATASET, 'data/train_70&70.csv') 
@@ -56,7 +56,7 @@ LABELS_PATH_VAL = os.path.join(DATASET, 'data/val_70&70.csv')
 LABELS_PATH_TEST = os.path.join(DATASET, 'data/test_70&70.csv')
 
 LABELS_PATH_TEST_BRSET = os.path.join(DATASET, 'data/test_brset_nooverlap.csv')
-LABELS_PATH_TEST_mBRSET = os.path.join(DATASET_mBRSET, 'data/test_mbrset_nooverlap.csv')
+LABELS_PATH_TEST_mBRSET = os.path.join(DATASET, 'data/test_mbrset_nooverlap.csv')
 
 DOWNLOAD = False
 SHAPE = (224, 224)
@@ -66,7 +66,7 @@ TEST_SIZE = 0.3
 UNDERSAMPLE = False
 
 IMAGES_B = os.path.join(DATASET, 'data/fundus_photos/')
-IMAGES_m = os.path.join(DATASET_mBRSET, 'data/images/')
+IMAGES_m = os.path.join(DATASET, 'data/images/')
 
 """
 Dataset Mean and Std:
@@ -88,13 +88,13 @@ NORM_STD = None # [0.229, 0.224, 0.225]
 # BACKBONE = 'visionfm'
 
 if BACKBONE == 'retfound':
-    weights = '/home/livieymli/brset_analysis/BRSET/src/Weights/RETFound_cfp_weights.pth'
+    weights = os.path.join(DATASET, 'src/Weights/RETFound_cfp_weights.pth')
 elif BACKBONE == 'visionfm':
     weights = {
         'arch' : 'vit_base',
         'image_size' : 224,
         'patch_size' : 16,
-        'weights' : '/home/livieymli/brset_analysis/BRSET/src/Weights/VFM_Fundus_weights.pth'
+        'weights' : os.path.join(DATASET, 'src/Weights/VFM_Fundus_weights.pth')
     }   
 else:
     weights = None
@@ -282,12 +282,11 @@ if TEST:
     print("Testing the model...")
 else:
     print("Training the model...")
-    model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'70+70_{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}_{LABEL}')
+    model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, ppath=DATASET, backbone=f'70+70_{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}_{LABEL}')
 
 # %% [markdown]
 # ### Load Trained Model 
-
-path = f'/home/livieymli/brset_analysis/BRSET/models/FT_70+70_{BACKBONE}_{backbone_mode}_3class_{LABEL}_best.pth'
+path = os.path.join(DATASET, f'output/models/FT_70+70_{BACKBONE}_{backbone_mode}_3class_{LABEL}_best.pth')
 net = torch.load(path, map_location=torch.device(device))
 if device.type == 'cpu':
     net = {k.replace('module.', ''): v for k, v in net.items()}

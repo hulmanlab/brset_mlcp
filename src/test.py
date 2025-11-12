@@ -50,7 +50,7 @@ def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, 
         else:
             results_df = pd.DataFrame({'y_test': y_test[:,1], 'y_pred': y_prob, 'y_camera': y_camera})
         
-        results_df.to_csv(f'output_predicted_probabilities/y_{prob_name}.csv', index=False)
+        results_df.to_csv(f'output/predicted_probabilities/y_{prob_name}.csv', index=False)
         print('saved')
     
     plot_matrix = False
