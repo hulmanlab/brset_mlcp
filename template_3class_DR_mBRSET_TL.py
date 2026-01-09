@@ -261,7 +261,7 @@ else:
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
 
 # %%
-model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, ppath=DATASET, backbone=f'{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET')
+model = train(model, train_dataloader, val_dataloader, criterion, optimizer, DATASET, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class_{LABEL}_mBRSET')
 
 # %% [markdown]
 # ### Test

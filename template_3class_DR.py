@@ -30,7 +30,7 @@ import argparse
 # %% [markdown]
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Set backbone and backbone_mode for the model.")
-parser.add_argument('-b','--backbone', type=str, required=True, choices=['convnextv2_large','resnet200d','retfound','dinov2_large','visionfm'], help="Specify the backbone model (convnextv2_large','resnet50','retfound','dinov2_large','visionfm').")
+parser.add_argument('-b','--backbone', type=str, required=True, choices=['retfound_d2_s','retfound_d2_m','dinov3_large','dinov2_large','visionfm'], help="Specify the backbone model (retfound_d2_s, retfound_d2_m, dinov3_large, dinov2_large, visionfm).")
 parser.add_argument('-bm', '--backbone_mode', type=str, required=True, choices=['fine_tune', 'eval'], help="Specify the backbone mode ('fine_tune' or 'eval').")
 parser.add_argument('-r', '--reproduce', type=bool, default=False, help="Specify if you want to reproduce the results from the article (True or False).")
 args = parser.parse_args()
@@ -39,6 +39,10 @@ args = parser.parse_args()
 BACKBONE = args.backbone 
 backbone_mode = args.backbone_mode 
 reproduce = args.reproduce 
+print(f'Backbone: {BACKBONE}')
+print(f'Backbone mode: {backbone_mode}')
+if reproduce:
+    print(f'Reproduce: {reproduce}')
 # %%
 # Constants:
 DATASET = os.path.dirname(os.path.realpath(__name__))
@@ -75,11 +79,6 @@ NORM_STD = [0.229, 0.224, 0.225]
 NORM_MEAN = None # [0.485, 0.456, 0.406]
 NORM_STD = None # [0.229, 0.224, 0.225]
 
-# BACKBONE = 'convnextv2_large'
-# BACKBONE = 'resnet200d'
-# BACKBONE = 'retfound'
-# BACKBONE = 'dinov2_large'
-# BACKBONE = 'visionfm'
 
 if BACKBONE == 'retfound':
     weights = os.path.join(DATASET, 'src/Weights/RETFound_cfp_weights.pth')
@@ -93,8 +92,6 @@ elif BACKBONE == 'visionfm':
 else:
     weights = None
 MODE = 'fine_tune'
-# backbone_mode = 'fine_tune' # 'fine_tune' or 'eval'
-# backbone_mode = 'eval'
 
 HIDDEN = [128]
 num_classes = 3
@@ -260,7 +257,7 @@ else:
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
 
 # %%
-model = train(model, train_dataloader, val_dataloader, criterion, optimizer, scheduler, num_epochs=num_epochs, save=True, device=device, ppath=DATASET, backbone=f'{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}_{LABEL}')
+model = train(model, train_dataloader, val_dataloader, criterion, optimizer, DATASET, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}_{LABEL}')
 
 # %% [markdown]
 # ### Test

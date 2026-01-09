@@ -9,7 +9,6 @@ gc()
 
 # /3class_prob/BRSET_TL
 # ^y.*\\.csv
-
 prob_root <- file.path(getwd(), "output", "predicted_probabilities", "mBRSET_EXEVAL")
 setwd(prob_root)
 files <- list.files(prob_root)
@@ -43,18 +42,29 @@ for (i in seq_along(files)) {
     } else {
       mode<-"Head"
     }
-    if (grepl("_convnextv2_large_", name)) {
-      model_name<-"ConvNeXtv2"
-    } else if (grepl("_dinov2_", name)) {
-      model_name<-"DINOv2"
-    } else if (grepl("_resnet200d_", name)) {
-      model_name<-"ResNet200d"
-    } else if (grepl("_retfound_", name)) {
-      model_name<-"RETFound"
+    model_name <- if (grepl("retfound_d2_s", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound_d2_m", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound", name)) {
+      "RETFound"
+    } else if (grepl("dinov3_large", name)) {
+      "DINOv3 Large"
+    } else if (grepl("visionfm", name)) {
+      "VisionFM"
+    } else if (grepl("dinov2", name)) {
+      "DINOv2 Large"
+    } else if (grepl("eyeclip", name)) {
+      "EyeCLIP"
+    } else if (grepl("convnext", name)) {
+      "ConvNeXt"
+    } else if (grepl("resnet200d", name)) {
+      "ResNet200d"
+    } else if (grepl("resnet50", name)) {
+      "ResNet50"
     } else {
-      model_name<-"VisionFM"
+      "Unknown Model"
     }
-    
     if (grepl("_reproduced", name)) {
       title<-sprintf("Reproducing %s on BRSET", model_name)
     } else if (grepl("/BRSET_TL", prob_root)){
@@ -69,15 +79,15 @@ for (i in seq_along(files)) {
     describe(df)
     
     # Optional: patch missing extreme values in-place
-    df$y_prob_0[df$y_prob_0 == 0] <- 1e-5
-    df$y_prob_1[df$y_prob_1 == 0] <- 1e-5
-    df$y_prob_2[df$y_prob_2 == 1] <- 0.99999
+    if (ncol(df) > 3) {
+      df$y_prob_0[df$y_prob_0 == 0] <- 1e-5
+      df$y_prob_1[df$y_prob_1 == 0] <- 1e-5
+      df$y_prob_2[df$y_prob_2 == 1] <- 0.99999
     
-    ### get label
-    one_hot_label <- df[, c(1:3)]
-    label <- colnames(one_hot_label)[apply(one_hot_label, 1, which.max)]
-    df$label <- label
-    
+    } else {
+      df$y_pred[df$y_pred == 0] <- 1e-5
+      df$y_pred[df$y_pred == 1] <- 0.99999
+    }
     
     # Define helper function
     
@@ -101,16 +111,18 @@ for (i in seq_along(files)) {
         stringsAsFactors = FALSE
       )
     }
-    
-    # Collect all results at once
-    metrics_results_pertest <- rbind(
-      get_calib_metrics_df(df$y_prob_0, df$y_test_0, "Normal", model_name, mode),
-      get_calib_metrics_df(df$y_prob_1, df$y_test_1, "Non-proliferative Retinopathy", model_name, mode),
-      get_calib_metrics_df(df$y_prob_2, df$y_test_2, "Proliferative Retinopathy", model_name, mode)
-    )
-    
 
-  metrics_results <- rbind(metrics_results, metrics_results_pertest)  
+    # Collect all results at once
+    if (ncol(df) > 3) {
+      metrics_results_pertest <- rbind(
+        get_calib_metrics_df(df$y_prob_0, df$y_test_0, "Normal", model_name, mode),
+        get_calib_metrics_df(df$y_prob_1, df$y_test_1, "Non-proliferative Retinopathy", model_name, mode),
+        get_calib_metrics_df(df$y_prob_2, df$y_test_2, "Proliferative Retinopathy", model_name, mode) 
+      )
+      metrics_results <- rbind(metrics_results, metrics_results_pertest)
+    } else {
+      metrics_results <- get_calib_metrics_df(df$y_pred, df$y_test, "Retinopathy", model_name, mode)
+    }
   }
 }
 write.csv(metrics_results, "calibration_intercept&slope_results.csv", row.names = FALSE)

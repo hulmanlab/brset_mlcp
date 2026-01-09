@@ -10,8 +10,8 @@ from tqdm import tqdm
 
 
 # %%
-DATASET = os.path.dirname(os.path.abspath(__name__))
-prob_root = os.path.join(DATASET, "output/predicted_probabilities/mBRSET_EXEVAL")
+DATASET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+prob_root = os.path.join(DATASET, "output/predicted_probabilities/BRSET_TL_b")
 files = os.listdir(prob_root)
 files.sort()
 print(files)
@@ -19,8 +19,12 @@ print(files)
 # %%
 def bootstrap_ensemble(df, n_iterations=1000):
     arr = df.to_numpy()
-    y_true = np.array(arr[:, :3].astype(int))
-    y_score = arr[:, 3:]
+    if arr.shape[1] > 3:
+        y_true = np.array(arr[:, :3].astype(int))
+        y_score = arr[:, 3:]
+    else:
+        y_true = np.array(arr[:, 0].astype(int))
+        y_score = arr[:, 1]
     y_score = np.where(y_score == 0, 0.000001, y_score)
     y_score = np.where(y_score == 1, 0.999999, y_score) # shape: (n, 4)
     
@@ -42,10 +46,15 @@ def bootstrap_ensemble(df, n_iterations=1000):
         
 
         # Compute class-wise AUCs
-        class_auc = roc_auc_score(y_resample, y_score_resample, average=None, multi_class='ovr')
-        auc_0_scores.append(class_auc[0])
-        auc_1_scores.append(class_auc[1])
-        auc_2_scores.append(class_auc[2])
+        if arr.shape[1] > 3:
+            class_auc = roc_auc_score(y_resample, y_score_resample, average=None, multi_class='ovr')
+            auc_0_scores.append(class_auc[0])
+            auc_1_scores.append(class_auc[1])
+            auc_2_scores.append(class_auc[2])
+        else:
+            auc_0_scores.append(np.nan)
+            auc_1_scores.append(np.nan)
+            auc_2_scores.append(np.nan)
 
         
         
@@ -68,7 +77,18 @@ for filename in files:
     if filename.endswith(".csv") and filename.startswith("y_") and 'reproduce' not in filename:
         print(f"File: {filename}")
         df = pd.read_csv(os.path.join(prob_root, filename))
-        model = filename.split('_')[1]
+        model = 'RETFound DINOv2 Shanghai' if 'retfound_d2_s' in filename else \
+                'RETFound DINOv2 Shanghai' if 'retfound_d2_m' in filename else \
+                'RETFound' if 'retfound' in filename else \
+                'DINOv3 Large' if 'dinov3_large' in filename else \
+                'VisionFM' if 'visionfm' in filename else \
+                'DINOv2 Large' if 'dinov2' in filename else \
+                'EyeCLIP' if 'eyeclip' in filename else \
+                'ConvNeXt' if 'convnext' in filename else \
+                'ResNet200d' if 'resnet200d' in filename else \
+                'ResNet50' if 'resnet50' in filename else \
+                'Unknown Model'
+
         mode = 'Head fine-tune' if 'eval' in filename else 'Full fine-tuned'
         # Function to process and append results
         def process_and_append(df_sub, name_prefix=""):
@@ -79,7 +99,10 @@ for filename in files:
             mean_auc, lower_auc, upper_auc = CI95(auc_scores)
             mean_auc_0, lower_auc_0, upper_auc_0 = CI95(auc_0_scores)
             mean_auc_1, lower_auc_1, upper_auc_1 = CI95(auc_1_scores)
-            mean_auc_2, lower_auc_2, upper_auc_2 = CI95(auc_2_scores)
+            if df_sub.shape[1] > 3:
+                mean_auc_2, lower_auc_2, upper_auc_2 = CI95(auc_2_scores)
+            else:
+                mean_auc_2, lower_auc_2, upper_auc_2 = np.nan, np.nan, np.nan
 
             new_results_row = {
                 'model': model,
@@ -93,12 +116,15 @@ for filename in files:
             new_plot_row = {
                 'model': model,
                 'mode': mode,
-                'mean_auc': mean_auc,
-                'lower_auc': lower_auc,
-                'upper_auc': upper_auc
+                'mean_auc': f'{mean_auc:.2f}',
+                'lower_auc': f'{lower_auc:.2f}',
+                'upper_auc': f'{upper_auc:.2f}'
             }
+            
             global df_result
             df_result = pd.concat([df_result, pd.DataFrame([new_results_row])], ignore_index=True)
+            if not df_sub.shape[1] > 3:
+                df_result = df_result[['model', 'mode', 'auc_macro']]
             global df_plot
             df_plot = pd.concat([df_plot, pd.DataFrame([new_plot_row])], ignore_index=True)
         

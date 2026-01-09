@@ -6,7 +6,7 @@ library(mcca)
 rm(list = ls(all.names = TRUE)) 
 gc()
 
-prob_root <- file.path(getwd(), "output", "predicted_probabilities", "mBRSET_EXEVAL")
+prob_root <- file.path(dirname(getwd()), "output", "predicted_probabilities", "mBRSET_EXEVAL")
 setwd(prob_root)
 files <- list.files(prob_root)
 files <- sort(files)
@@ -33,8 +33,29 @@ for (i in seq_along(files)) {
   if (grepl("^y.*\\.csv$", name) && !grepl("reproduced", name) && !grepl("pdi", name) && !grepl("ensemble", name)) {
     print(name)
     parts <- unlist(strsplit(name, "_"))
-    model <- parts[2]
-    # mode <- if (parts[length(parts) - 3] == "eval") "Head fine-tune" else "Full fine-tuned"
+    model <- if (grepl("retfound_d2_s", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound_d2_m", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound", name)) {
+      "RETFound"
+    } else if (grepl("dinov3_large", name)) {
+      "DINOv3 Large"
+    } else if (grepl("visionfm", name)) {
+      "VisionFM"
+    } else if (grepl("dinov2", name)) {
+      "DINOv2 Large"
+    } else if (grepl("eyeclip", name)) {
+      "EyeCLIP"
+    } else if (grepl("convnext", name)) {
+      "ConvNeXt"
+    } else if (grepl("resnet200d", name)) {
+      "ResNet200d"
+    } else if (grepl("resnet50", name)) {
+      "ResNet50"
+    } else {
+      "Unknown Model"
+    }
     if (grepl("_fine_tune_", name)) {
       mode<-"Full" # Head, Full
     } else {
@@ -46,9 +67,20 @@ for (i in seq_along(files)) {
     arr <- as.matrix(df)
     
     # Extract labels and scores
-    y_true <- arr[, 1:3]
-    y_score <- arr[, 4:ncol(arr)]
-    
+    if (ncol(arr) > 3) {
+      y_true <- arr[, 1:3]
+      y_score <- arr[, 4:ncol(arr)]
+    } else {
+      y_true <- matrix(
+        as.numeric(arr[, 1]),
+        ncol = 1
+      )
+      y_score <- matrix(
+        as.numeric(arr[, 2]),
+        ncol = 1
+      )
+    }
+
     # Apply epsilon adjustments
     y_score[y_score == 0] <- 1e-6
     y_score[y_score == 1] <- 0.999999
@@ -58,19 +90,26 @@ for (i in seq_along(files)) {
     n <- nrow(y_true)
     brier_scores <- numeric(n_iterations)
     
-    
     for (itr in 1:n_iterations) {
       idx <- sample(1:n, n, replace = TRUE)
       y_resample <- y_true[idx, ]
       y_score_resample <- y_score[idx, ]
-      
-      true_labels <- apply(y_resample, 1, which.max)
-      
+    
+      if (ncol(arr) > 3) {
+          true_labels <- apply(y_resample, 1, which.max)
+        } else {
+          true_labels <- y_resample
+        }
+
       # Multiclass Brier score
       # https://github.com/benvancalster/OrdinalCalibration/blob/main/ordcalfunctions.R l 230
-      brier_cal <- mbrier(outc = true_labels, preds = y_score_resample, k = 3)
-      brier_scores[itr] <- brier_cal
-      
+      if (ncol(arr) > 3) {
+        brier_cal <- mbrier(outc = true_labels, preds = y_score_resample, k = 3)
+        brier_scores[itr] <- brier_cal
+      } else {
+        brier_cal <- mbrier(outc = true_labels, preds = y_score_resample, k = 2)
+        brier_scores[itr] <- brier_cal
+      }
     }
     
     mean_brier <- mean(brier_scores)

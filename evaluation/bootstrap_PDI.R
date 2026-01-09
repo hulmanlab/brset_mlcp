@@ -46,8 +46,29 @@ for (i in seq_along(files)) {
   if (grepl("^y.*\\.csv$", name) && !grepl("reproduced", name) && !grepl("pdi", name) && !grepl("ensemble", name)) {
     print(name)
     parts <- unlist(strsplit(name, "_"))
-    model <- parts[2]
-    # mode <- if (parts[length(parts) - 3] == "eval") "Head fine-tune" else "Full fine-tuned"
+    model <- if (grepl("retfound_d2_s", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound_d2_m", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound", name)) {
+      "RETFound"
+    } else if (grepl("dinov3_large", name)) {
+      "DINOv3 Large"
+    } else if (grepl("visionfm", name)) {
+      "VisionFM"
+    } else if (grepl("dinov2", name)) {
+      "DINOv2 Large"
+    } else if (grepl("eyeclip", name)) {
+      "EyeCLIP"
+    } else if (grepl("convnext", name)) {
+      "ConvNeXt"
+    } else if (grepl("resnet200d", name)) {
+      "ResNet200d"
+    } else if (grepl("resnet50", name)) {
+      "ResNet50"
+    } else {
+      "Unknown Model"
+    }
     if (grepl("_fine_tune_", name)) {
       mode<-"Full" # Head, Full
     } else {

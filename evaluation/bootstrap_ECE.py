@@ -8,12 +8,12 @@ from sklearn.metrics import roc_auc_score
 from itertools import combinations
 from tqdm import tqdm
 from torch import tensor
-from torchmetrics.classification import MulticlassCalibrationError
+from torchmetrics.classification import BinaryCalibrationError, MulticlassCalibrationError
 
 
 # %%
-DATASET = os.path.dirname(os.path.abspath(__name__))
-prob_root = os.path.join(DATASET, "output/predicted_probabilities/mBRSET_EXEVAL")
+DATASET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+prob_root = os.path.join(DATASET, "output/predicted_probabilities/BRSET_TL")
 files = os.listdir(prob_root)
 files.sort()
 print(files)
@@ -21,9 +21,13 @@ print(files)
 # %%
 def bootstrap_ensemble(df, n_iterations=1000):
     arr = df.to_numpy()
-    y_true = np.array(arr[:, :3].astype(int))
-    y_true = np.argmax(y_true, axis=1)  # Convert one-hot to class labels
-    y_score = arr[:, 3:]
+    if arr.shape[1] > 3:
+        y_true = np.array(arr[:, :3].astype(int))
+        y_true = np.argmax(y_true, axis=1)  # Convert one-hot to class labels
+        y_score = arr[:, 3:]
+    else:
+        y_true = np.array(arr[:, 0].astype(int))
+        y_score = arr[:, 1]
     y_score = np.where(y_score == 0, 0.000001, y_score)
     y_score = np.where(y_score == 1, 0.999999, y_score) # shape: (n, 4)
     
@@ -36,7 +40,10 @@ def bootstrap_ensemble(df, n_iterations=1000):
         y_resample, y_score_resample = resample(y_true, y_score, replace=True)
         preds = tensor(y_score_resample)
         target = tensor(y_resample)
-        metric = MulticlassCalibrationError(num_classes=3, n_bins=10, norm='l1')
+        if arr.shape[1] > 3:
+            metric = MulticlassCalibrationError(num_classes=3, n_bins=10, norm='l1')
+        else:
+            metric = BinaryCalibrationError(n_bins=10, norm='l1')
         ece = metric(preds, target).item()
 
         ece_score.append(ece)
@@ -57,7 +64,18 @@ for filename in files:
     if filename.endswith(".csv") and filename.startswith("y_") and 'reproduce' not in filename:
         print(f"File: {filename}")
         df = pd.read_csv(os.path.join(prob_root, filename))
-        model = filename.split('_')[1]
+        model = 'RETFound DINOv2 Shanghai' if 'retfound_d2_s' in filename else \
+                'RETFound DINOv2 Shanghai' if 'retfound_d2_m' in filename else \
+                'RETFound' if 'retfound' in filename else \
+                'DINOv3 Large' if 'dinov3_large' in filename else \
+                'VisionFM' if 'visionfm' in filename else \
+                'DINOv2 Large' if 'dinov2' in filename else \
+                'EyeCLIP' if 'eyeclip' in filename else \
+                'ConvNeXt' if 'convnext' in filename else \
+                'ResNet200d' if 'resnet200d' in filename else \
+                'ResNet50' if 'resnet50' in filename else \
+                'Unknown Model'
+
         mode = 'Head fine-tune' if 'eval' in filename else 'Full fine-tuned'
         # Function to process and append results
         def process_and_append(df_sub, name_prefix=""):
@@ -80,6 +98,8 @@ for filename in files:
             df = df.drop(columns=['y_camera'])
         process_and_append(df)
     
+
+#%% 
 print(df_result)
 df_result.to_csv(os.path.join(prob_root, 'ece_results.csv'), index=False)
 

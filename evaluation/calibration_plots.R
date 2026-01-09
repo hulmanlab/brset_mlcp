@@ -9,15 +9,15 @@ gc()
 
 # /3class_prob/BRSET_TL
 # ^y.*\\.csv
-
-prob_root <- file.path(getwd(), "output", "predicted_probabilities", "mBRSET_EXEVAL")
+prob_root <- '/home/livieymli/brset_analysis/BRSET/output/predicted_probabilities/BRSET_TL'
+# prob_root <- file.path(getwd(), "output", "predicted_probabilities", "mBRSET_EXEVAL")
 setwd(prob_root)
 files <- list.files(prob_root)
 files <- sort(files)
 
 for (i in seq_along(files)) {
   name <- files[i]
-  if (grepl("perfect_calibrated.csv$", name) && !grepl("pdi", name) && !grepl("ensemble", name)) {
+  if (grepl("^y.*\\.csv$", name) && !grepl("pdi", name) && !grepl("ensemble", name)) {
     
     print(name)
     '
@@ -30,16 +30,28 @@ for (i in seq_along(files)) {
     } else {
       mode<-"Head"
     }
-    if (grepl("_convnextv2_large_", name)) {
-      model_name<-"ConvNeXtv2"
-    } else if (grepl("_dinov2_", name)) {
-      model_name<-"DINOv2"
-    } else if (grepl("_resnet200d_", name)) {
-      model_name<-"ResNet200d"
-    } else if (grepl("_retfound_", name)) {
-      model_name<-"RETFound"
+    model_name <- if (grepl("retfound_d2_s", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound_d2_m", name)) {
+      "RETFound DINOv2 Shanghai"
+    } else if (grepl("retfound", name)) {
+      "RETFound"
+    } else if (grepl("dinov3_large", name)) {
+      "DINOv3 Large"
+    } else if (grepl("visionfm", name)) {
+      "VisionFM"
+    } else if (grepl("dinov2", name)) {
+      "DINOv2 Large"
+    } else if (grepl("eyeclip", name)) {
+      "EyeCLIP"
+    } else if (grepl("convnext", name)) {
+      "ConvNeXt"
+    } else if (grepl("resnet200d", name)) {
+      "ResNet200d"
+    } else if (grepl("resnet50", name)) {
+      "ResNet50"
     } else {
-      model_name<-"VisionFM"
+      "Unknown Model"
     }
     
     if (grepl("_reproduced", name)) {
@@ -56,14 +68,20 @@ for (i in seq_along(files)) {
     describe(df)
     
     # Optional: patch missing extreme values in-place
-    df$y_prob_0[df$y_prob_0 == 0] <- 1e-5
-    df$y_prob_1[df$y_prob_1 == 0] <- 1e-5
-    df$y_prob_2[df$y_prob_2 == 1] <- 0.99999
+    if (ncol(df) > 3) {
+      df$y_prob_0[df$y_prob_0 == 0] <- 1e-5
+      df$y_prob_1[df$y_prob_1 == 0] <- 1e-5
+      df$y_prob_2[df$y_prob_2 == 1] <- 0.99999
+      one_hot_label <- df[, c(1:3)]
+      label <- colnames(one_hot_label)[apply(one_hot_label, 1, which.max)]
     
-    ### get label
-    one_hot_label <- df[, c(1:3)]
-    label <- colnames(one_hot_label)[apply(one_hot_label, 1, which.max)]
-    df$label <- label
+    } else {
+      df$y_pred[df$y_pred == 0] <- 1e-5
+      df$y_pred[df$y_pred == 1] <- 0.99999
+      label <- df$y_test
+    }
+    # df$label <- label
+    df$label <- as.character(label)
     
     # Get total per class
     total_per_class <- df %>%
@@ -83,7 +101,6 @@ for (i in seq_along(files)) {
         mutate(perc = count / class_total * 100) %>%  # class-normalized percentage
         mutate(perc = ifelse(label %in% invert_labels, -perc, perc)) %>%
         filter(!is.na(bin_mid), !is.na(perc))
-      
       tick_length <- max(abs(df_binned$perc)) * 0.015
       label_offset <- tick_length * 2
       gap <- 0.1
@@ -97,8 +114,15 @@ for (i in seq_along(files)) {
         labs(title = title_text,
              subtitle = subtitle_text,
              x = x_text,
-             y = "Percentage (%)") +
-        scale_fill_manual(values = c("#004D40", "#FFC107", "#D81B60")) +
+             y = "Percentage (%)") + 
+        {
+          if (ncol(df) > 4) {
+            scale_fill_manual(values = c("#004D40", "#FFC107", "#D81B60"))
+          } else {
+            scale_fill_manual(values = c("#004D40", "#D81B60"))
+          }
+        } +
+        # scale_fill_manual(values = c("#004D40", "#FFC107", "#D81B60")) +
         theme_minimal() +
         theme(
               panel.grid.minor = element_blank(),
@@ -111,12 +135,17 @@ for (i in seq_along(files)) {
     
 
     # Define input
-    plot_list <- list(
+    if (ncol(df) > 4) {
+      plot_list <- list(
       list(prob_col = "y_prob_0", invert_labels = c("y_test_1", "y_test_2"), title = "Distribution of predicted probabilities", subtitle = "Normal", x = ""),
       list(prob_col = "y_prob_1", invert_labels = c("y_test_0", "y_test_2"), title = "", subtitle = "Non-proliferative retinopathy", x = ""),
       list(prob_col = "y_prob_2", invert_labels = c("y_test_0", "y_test_1"), title = "", subtitle = "Proliferative retinopathy", x = "Predicted probability")
     )
-    
+    } else {
+      plot_list <- list(
+      list(prob_col = "y_pred", invert_labels = c("0"), title = "Distribution of predicted probabilities", subtitle = "Retinopathy", x = "Predicted probability")
+      )
+    }
     # Generate and combine plots
     plots <- lapply(plot_list, function(p) {
       plot_probs(df, p$prob_col, p$invert_labels, p$title, p$subtitle, p$x)
@@ -137,18 +166,30 @@ for (i in seq_along(files)) {
     }
      
     # Create long-format calibration data
-    df_calib <- bind_rows(
-      get_calib_df(df$y_prob_0, df$y_test_0, "Normal"),
-      get_calib_df(df$y_prob_1, df$y_test_1, "Non-proliferative Retinopathy"),
-      get_calib_df(df$y_prob_2, df$y_test_2, "Proliferative Retinopathy"),
-      data.frame(x = c(0, 1), y = c(0, 1), class = "Ideal")
-    ) %>%
-      mutate(class = factor(class, levels = c("Normal", "Non-proliferative Retinopathy", "Proliferative Retinopathy", "Ideal")))
+    if (ncol(df) > 4) {
+      df_calib <- bind_rows(
+        get_calib_df(df$y_prob_0, df$y_test_0, "Normal"),
+        get_calib_df(df$y_prob_1, df$y_test_1, "Non-proliferative Retinopathy"),
+        get_calib_df(df$y_prob_2, df$y_test_2, "Proliferative Retinopathy"),
+        data.frame(x = c(0, 1), y = c(0, 1), class = "Ideal")
+      ) %>%
+        mutate(class = factor(class, levels = c("Normal", "Non-proliferative Retinopathy", "Proliferative Retinopathy", "Ideal")))
 
-    color_map <- setNames(
-      c("#004D40", "#FFC107", "#D81B60", "#808080"),
-      c("Normal", "Non-proliferative Retinopathy", "Proliferative Retinopathy", "Ideal")
-    )
+      color_map <- setNames(
+        c("#004D40", "#FFC107", "#D81B60", "#808080"),
+        c("Normal", "Non-proliferative Retinopathy", "Proliferative Retinopathy", "Ideal")
+      )
+    } else {
+      df_calib <- bind_rows(
+        get_calib_df(df$y_pred, df$y_test, "Retinopathy"),
+        data.frame(x = c(0, 1), y = c(0, 1), class = "Ideal")
+      ) %>%
+        mutate(class = factor(class, levels = c("Retinopathy", "Ideal")))
+      color_map <- setNames(
+        c("#D81B60", "#808080"),
+        c("Retinopathy", "Ideal")
+      )
+    }
     
     # Plot
     cp <- ggplot(df_calib, aes(x = x, y = y, color = class)) +
@@ -180,7 +221,7 @@ for (i in seq_along(files)) {
                       )
     full
     name <- strsplit(name, "\\.")[[1]][1]
-    ggsave(sprintf("%s.png", name), full, width = 20, height = 7.7, dpi = 300)
+    ggsave(sprintf("a_%s.png", name), full, width = 20, height = 7.7, dpi = 300)
     
     
     #Transfer learning down-stream network fine-tuned 
