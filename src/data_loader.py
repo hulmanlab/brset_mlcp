@@ -288,13 +288,13 @@ class BRSETDataset(Dataset):
     def __getitem__(self, idx):
         # Images:
         img_path = self.image_data[idx]
-
-        img = Image.open( os.path.join(self.images_dir, str(img_path) + '.jpg') ).convert("RGB")
+        img = Image.open(os.path.join(self.images_dir, str(img_path) + '.jpg') ).convert("RGB")
         img = self.transform(img)
 
         return {
-            # 'image_id' : self.image_data[idx],
-            'camera': self.camera[idx],
+            'image_id' : self.image_data[idx],
+            # TODO: camera need to be one hot encoded if used
+            # 'camera': torch.FloatTensor(self.camera[idx]),
             'image': torch.FloatTensor(img),
             'labels': torch.FloatTensor(self.labels[idx])
         }

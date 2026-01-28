@@ -3,26 +3,42 @@
 
 # %%
 import os
-# os.environ['CUDA_VISIBLE_DEVICES'] = "0, 6"
+import torch
+import torch.distributed as dist
+from datetime import timedelta
+os.environ["TORCH_DISTRIBUTED_DEBUG"] = "DETAIL"
 
-from src.get_dataset import get_dataset, split_data, plot_labels_distribution
+def setup_ddp():
+    if torch.cuda.is_available() and "RANK" in os.environ:
+        torch.distributed.init_process_group(backend="nccl", timeout=timedelta(minutes=15))
+        local_rank = int(os.environ["LOCAL_RANK"])
+        torch.cuda.set_device(local_rank)
+        device = torch.device(f"cuda:{local_rank}")
+        return True, local_rank, device
+
+    # CPU or single-process GPU
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    return False, 0, device
+
+from src.get_dataset import get_dataset
 from src.data_loader import BRSETDataset, process_labels
-from src.RetFound import get_retfound
-from src.FocalLoss import FocalLoss
 from src.model import FoundationalCVModel, FoundationalCVModelWithClassifier
 from sklearn.utils.class_weight import compute_class_weight
-from sklearn.model_selection import StratifiedGroupKFold
-
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-
-import torch
+from torch.utils.data import DataLoader
+from torch.utils.data.distributed import DistributedSampler
 import torch.nn as nn
+from torch.nn.parallel import DistributedDataParallel as DDP
 import torch.optim as optim
 from torchvision import transforms
-from torch.utils.data import DataLoader
 
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# loss function and optimizer
+from src.FocalLoss import BinaryFocalLoss, FocalLoss
+
+# train and test functions
 from src.train import train
 from src.test import test
 import argparse 
@@ -30,14 +46,14 @@ import argparse
 # %% [markdown]
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Set backbone and backbone_mode for the model.")
-parser.add_argument('-b','--backbone', type=str, required=True, choices=['retfound_d2_s','retfound_d2_m','dinov3_large','dinov2_large','visionfm'], help="Specify the backbone model (retfound_d2_s, retfound_d2_m, dinov3_large, dinov2_large, visionfm).")
+parser.add_argument('-b','--backbone', type=str, required=True, choices=['retfound_d2_s','retfound_d2_m','dinov3_large','dinov2_large','visionfm', 'retfound'], help="Specify the backbone model (retfound_d2_s, retfound_d2_m, dinov3_large, dinov2_large, visionfm).")
 parser.add_argument('-bm', '--backbone_mode', type=str, required=True, choices=['fine_tune', 'eval'], help="Specify the backbone mode ('fine_tune' or 'eval').")
 parser.add_argument('-r', '--reproduce', type=bool, default=False, help="Specify if you want to reproduce the results from the article (True or False).")
 args = parser.parse_args()
 
 # Assign parsed arguments to variables
 BACKBONE = args.backbone 
-backbone_mode = args.backbone_mode 
+backbone_mode = args.backbone_mode
 reproduce = args.reproduce 
 print(f'Backbone: {BACKBONE}')
 print(f'Backbone mode: {backbone_mode}')
@@ -82,6 +98,12 @@ NORM_STD = None # [0.229, 0.224, 0.225]
 
 if BACKBONE == 'retfound':
     weights = os.path.join(DATASET, 'src/Weights/RETFound_cfp_weights.pth')
+elif BACKBONE == 'retfound_d2_s':
+    weights = os.path.join(DATASET, 'src/Weights/RETFound_dinov2_shanghai.pth')
+elif BACKBONE == 'retfound_d2_m':
+    weights = os.path.join(DATASET, 'src/Weights/RETFound_dinov2_meh.pth')
+elif BACKBONE == 'dinov3_large':
+    weights = os.path.join(DATASET, 'src/Weights/dinov3_vitl16_pretrain_lvd1689m-8aa4cbdd.pth')
 elif BACKBONE == 'visionfm':
     weights = {
         'arch' : 'vit_base',
@@ -106,7 +128,13 @@ OPTIMIZER = 'adam'
 num_epochs = 50
 learning_rate = 1e-5
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+ddp, local_rank, device = setup_ddp()
+if ddp:
+    is_main_process = (torch.distributed.get_rank() == 0)
+else:
+    is_main_process = True
+
 
 print("Using", torch.cuda.device_count(), "GPUs!")
 
@@ -154,7 +182,7 @@ test_transform = transforms.Compose([
 
 if NORM_MEAN is not None and NORM_STD is not None:
     test_transform.transforms.append(transforms.Normalize(mean=NORM_MEAN, std=NORM_STD))
-
+ 
 # %%
 # Create the custom dataset
 train_dataset = BRSETDataset(
@@ -187,27 +215,31 @@ val_dataset = BRSETDataset(
     transform=test_transform
 )
 
-train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS, pin_memory=True)
-test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
-val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+if ddp:
+    train_sampler = DistributedSampler(train_dataset, shuffle=True)
+else:
+    train_sampler = None
+
+
+train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler, shuffle=(train_sampler is None), num_workers=NUM_WORKERS, pin_memory=(device.type == "cuda"))
+val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory = (device.type == "cuda"))
+test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory = (device.type == "cuda"))
 
 # %%
 # Print 6 samples with their labels
 # Iterate through the DataLoader and plot the images with labels
-
-for batch in train_dataloader:
-
-    images, labels = batch['image'], batch['labels']
-
-    for i in range(len(images)):
-        if i == 6:
-            break
-        plt.subplot(2, 3, i + 1)
-        plt.imshow(images[i].permute(1, 2, 0))  # Permute to (H, W, C) from (C, H, W)
-        plt.title(f"Label: {np.argmax(labels[i])}")
-        plt.axis('off')
-    plt.show()
-    break
+# if not ddp:
+#     for batch in train_dataloader:
+#         images, labels = batch['image'], batch['labels']
+#         for i in range(len(images)):
+#             if i == 6:
+#                 break
+#             plt.subplot(2, 3, i + 1)
+#             plt.imshow(images[i].permute(1, 2, 0))  # Permute to (H, W, C) from (C, H, W)
+#             plt.title(f"Label: {labels[i]}")
+#             plt.axis('off')
+#         plt.show()
+#         break
 
 # %% [markdown]
 # ### Model
@@ -220,10 +252,21 @@ backbone_model = FoundationalCVModel(backbone=BACKBONE, mode=MODE, weights=weigh
 model = FoundationalCVModelWithClassifier(backbone_model, hidden=HIDDEN, num_classes=num_classes, mode=MODE, backbone_mode=backbone_mode)
 model.to(device)
 
-# Use DataParallel to parallelize the model across multiple GPUs
-if torch.cuda.device_count() > 1:
-    print("Using", torch.cuda.device_count(), "GPUs!")
-    model = nn.DataParallel(model, [0,1])
+print(
+    f"[rank {torch.distributed.get_rank() if ddp else 0}] "
+    f"num params = {sum(p.numel() for p in model.parameters())}"
+)
+
+if ddp:
+    model = DDP(
+        model,
+        device_ids=[local_rank],
+        output_device=local_rank,
+        static_graph=True,
+        broadcast_buffers=False,
+        find_unused_parameters=False
+    )
+
 
 # %% [markdown]
 # ### Training:
@@ -248,76 +291,35 @@ else:
     #criterion = nn.BCEWithLogitsLoss() # Binary Cross-Entropy Loss
 
 if OPTIMIZER == 'adam':
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate)
 elif OPTIMIZER == 'adamw':
-    optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
+    optimizer = optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate)
 else:
-    optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
-    
-scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
+    optimizer = optim.SGD(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate, momentum=0.9)
 
+scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
 # %%
-model = train(model, train_dataloader, val_dataloader, criterion, optimizer, DATASET, scheduler, num_epochs=num_epochs, save=True, device=device, backbone=f'{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}_{LABEL}')
+model = train(model, train_dataloader, val_dataloader, criterion, optimizer, DATASET, scheduler, num_epochs=num_epochs, save=True, device=device,
+               backbone=f'FT_{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}_{LABEL}', train_sampler=train_sampler, is_main_process=is_main_process)
 
 # %% [markdown]
 # ### Test
 
 # %%
 path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_3class_{LABEL}_best.pth')
-net = torch.load(path, map_location=torch.device(device))
-if device.type == 'cpu':
-    net = {k.replace('module.', ''): v for k, v in net.items()}
-    # net = {k.replace('backbone.', ''): v for k, v in net.items()}
-model.load_state_dict(net, strict=False)
-#%%
-test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}')
+net = torch.load(path, map_location=device)
 
-# %% [markdown]
-# ### Image quality assessment
+# Handle DDP / non-DDP key differences
+if ddp:
+    model.module.load_state_dict(net, strict=False)
+else:
+    model.load_state_dict(net, strict=False)
+
 
 # %%
-# Good quality images
-adequate_df = df_test[df_test['quality'] == 'Adequate']
+if is_main_process:
+    test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'FT_{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}')
 
-# Bad quality images
-inadequate_df = df_test[df_test['quality'] == 'Inadequate']
-
-adequate_dataset = BRSETDataset(
-    adequate_df, 
-    IMAGE_COL, 
-    IMAGES, 
-    LABEL, 
-    mlb, 
-    train_columns, 
-    transform=test_transform
-)
-
-inadequate_dataset = BRSETDataset(
-    inadequate_df, 
-    IMAGE_COL, 
-    IMAGES, 
-    LABEL, 
-    mlb, 
-    train_columns, 
-    transform=test_transform
-)
-
-adequate_dataloader = DataLoader(adequate_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
-inadequate_dataloader = DataLoader(inadequate_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
-
-# %% [markdown]
-# #### Adequate image quality
-
-# %%
-test(model, adequate_dataloader, saliency=True, device=device, save=True)
-
-# %% [markdown]
-# #### Inadequate image quality
-
-# %%
-test(model, inadequate_dataloader, saliency=True, device=device)
-
-# %%
-
-
-
+#%% frees distributed resources
+if ddp:
+    torch.distributed.destroy_process_group()

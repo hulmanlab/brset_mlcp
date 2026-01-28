@@ -65,6 +65,15 @@ def vit_large_patch16(**kwargs):
         norm_layer=partial(nn.LayerNorm, eps=1e-6), **kwargs)
     return model
 
+def RETFound_dinov2(**kwargs):
+    model = timm.create_model(
+        'vit_large_patch14_dinov2.lvd142m',
+        pretrained=True,
+        img_size=224,
+        **kwargs
+    )
+    return model
+
 
 # --------------------------------------------------------
 # Interpolate position embeddings for high-resolution
@@ -153,12 +162,7 @@ def get_retfound(weights=None, num_classes=3, backbone=False):
     Returns:
         ModifiedRetFound: Instance of the modified RetFound model.
     """
-    # call the model
-    model = vit_large_patch16(
-        num_classes=3,
-        drop_path_rate=0.2,
-        global_pool=True
-    )
+    
     if not weights:
         download_weights = input("Do you want to download the pretrained weights? (y/n): ")
         if download_weights in ['y', 'Y', 'yes', 'Yes', 'YES']:
@@ -178,20 +182,44 @@ def get_retfound(weights=None, num_classes=3, backbone=False):
             return
 
     # load RETFound weights
-    checkpoint = torch.load(weights, map_location='cpu')
-    checkpoint_model = checkpoint['model']
+    checkpoint = torch.load(weights, map_location='cpu', weights_only=False)
+    print(f"Loaded pre-trained checkpoint from: {weights}")
+
+    if 'dinov2' in weights:
+        # call the model
+        model = RETFound_dinov2(
+            num_classes=num_classes,
+            drop_path_rate=0.2
+        )
+        checkpoint_model = checkpoint["teacher"]
+    else:  # RETFound_mae
+        # call the model
+        model = vit_large_patch16(
+            num_classes=num_classes,
+            drop_path_rate=0.2,
+            global_pool=True
+        )
+        checkpoint_model = checkpoint["model"]
+    # -- Key hygiene
+    checkpoint_model = {k.replace("backbone.", ""): v for k, v in checkpoint_model.items()}
+    checkpoint_model = {k.replace("mlp.w12.", "mlp.fc1."): v for k, v in checkpoint_model.items()}
+    checkpoint_model = {k.replace("mlp.w3.", "mlp.fc2."): v for k, v in checkpoint_model.items()}
+
+    # -- Remove classifier if shape mismatched
     state_dict = model.state_dict()
-    for k in ['head.weight', 'head.bias']:
+    for k in ["head.weight", "head.bias"]:
         if k in checkpoint_model and checkpoint_model[k].shape != state_dict[k].shape:
             print(f"Removing key {k} from pretrained checkpoint")
             del checkpoint_model[k]
 
-    # interpolate position embeddings for high-resolution# interpolate position embedding
+    # -- Interpolate pos embed (ViT)
     interpolate_pos_embed(model, checkpoint_model)
     # load pre-trained model
-    msg = model.load_state_dict(checkpoint_model, strict=False)
+    model.load_state_dict(checkpoint_model, strict=False)
 
-    assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'fc_norm.weight', 'fc_norm.bias'}
+
+
+    # assert set(msg.missing_keys) == {'head.weight', 'head.bias', 'fc_norm.weight', 'fc_norm.bias'}
 
     # manually initialize fc layer
     # trunc_normal_(model.head.weight, std=2e-5)

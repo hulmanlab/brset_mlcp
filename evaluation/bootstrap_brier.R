@@ -3,12 +3,26 @@ library(dplyr)
 library(pROC)
 library(caret)
 library(mcca)
+library(ggplot2)
 rm(list = ls(all.names = TRUE)) 
 gc()
 
-prob_root <- file.path(dirname(getwd()), "output", "predicted_probabilities", "mBRSET_EXEVAL")
+library(optparse)
+
+option_list <- list(
+  make_option("--prob_root", default = "BRSET_TL_b")
+)
+
+opts <- parse_args(OptionParser(option_list = option_list))
+path <- opts$prob_root
+prob_root <- file.path(getwd(), "output", "predicted_probabilities", path)
+# prob_root <- '/home/livieymli/brset_analysis/BRSET/output/predicted_probabilities/BRSET_TL_b'
 setwd(prob_root)
 files <- list.files(prob_root)
+files <- files[
+  grepl("^y.*\\.csv$", files) &
+  !grepl("convnextv2|resnet", files)
+]
 files <- sort(files)
 
 brier_results <- data.frame(
@@ -31,12 +45,12 @@ mbrier <- function(outc,preds,k){
 for (i in seq_along(files)) {
   name <- files[i]
   if (grepl("^y.*\\.csv$", name) && !grepl("reproduced", name) && !grepl("pdi", name) && !grepl("ensemble", name)) {
-    print(name)
+    # print(name)
     parts <- unlist(strsplit(name, "_"))
     model <- if (grepl("retfound_d2_s", name)) {
       "RETFound DINOv2 Shanghai"
     } else if (grepl("retfound_d2_m", name)) {
-      "RETFound DINOv2 Shanghai"
+      "RETFound DINOv2 MEH"
     } else if (grepl("retfound", name)) {
       "RETFound"
     } else if (grepl("dinov3_large", name)) {
@@ -57,9 +71,9 @@ for (i in seq_along(files)) {
       "Unknown Model"
     }
     if (grepl("_fine_tune_", name)) {
-      mode<-"Full" # Head, Full
+      mode<-"Full fine-tune" # Head, Full
     } else {
-      mode<-"Head"
+      mode<-"Head fine-tune"
     }
     df<-read.csv(name)
     
@@ -119,7 +133,7 @@ for (i in seq_along(files)) {
     brier_results <- rbind(brier_results, data.frame(
       model = paste0(model),
       mode = paste0(mode),
-      brier = sprintf("%.2f [%.2f - %.2f]", mean_brier, ci_brier[1], ci_brier[2]),
+      brier = sprintf("%.2f [%.2f, %.2f]", mean_brier, ci_brier[1], ci_brier[2]),
       mean_brier = mean_brier,
       lower_brier = ci_brier[1],
       upper_brier = ci_brier[2],
@@ -127,7 +141,7 @@ for (i in seq_along(files)) {
     ))
   }
 }
-print(brier_results)
+# print(brier_results)
+write.csv(brier_results, file.path(prob_root, "summary", "Brier_results.csv"), row.names = FALSE)
 
-write.csv(brier_results, "brier_results.csv", row.names = FALSE)
-
+gc()

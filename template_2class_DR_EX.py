@@ -21,21 +21,13 @@ def setup_ddp():
 from src.get_dataset import get_dataset
 from src.data_loader import BRSETDataset, process_labels
 from src.model import FoundationalCVModel, FoundationalCVModelWithClassifier
-from sklearn.utils.class_weight import compute_class_weight
 from torch.utils.data import DataLoader
-from torch.utils.data.distributed import DistributedSampler
-import torch.nn as nn
 from torch.nn.parallel import DistributedDataParallel as DDP
-import torch.optim as optim
 from torchvision import transforms
 
-import numpy as np
-
 # loss function and optimizer
-from src.FocalLoss import BinaryFocalLoss, FocalLoss
 
 # train and test functions
-from src.train import train
 from src.test import test
 import argparse 
 
@@ -44,45 +36,28 @@ import argparse
 parser = argparse.ArgumentParser(description="Set backbone and backbone_mode for the model.")
 parser.add_argument('-b','--backbone', type=str, required=True, choices=['retfound_d2_s','retfound_d2_m','dinov3_large','dinov2_large','visionfm', 'retfound'], help="Specify the backbone model (retfound_d2_s, retfound_d2_m, dinov3_large, dinov2_large, visionfm).")
 parser.add_argument('-bm', '--backbone_mode', type=str, required=True, choices=['fine_tune', 'eval'], help="Specify the backbone mode ('fine_tune' or 'eval').")
-parser.add_argument('-r', '--reproduce', type=bool, default=False, help="Specify if you want to reproduce the results from the article (True or False).")
 args = parser.parse_args()
 
 # Assign parsed arguments to variables
 BACKBONE = args.backbone 
 backbone_mode = args.backbone_mode
-reproduce = args.reproduce 
 
 # BACKBONE = 'dinov3_large'
 # backbone_mode = 'eval'
-# reproduce = False
 
 print(f'Backbone: {BACKBONE}')
 print(f'Backbone mode: {backbone_mode}')
-if reproduce:
-    print(f'Reproduce: {reproduce}')
 
-# %%
-# Constants:
+
 DATASET = os.path.dirname(os.path.realpath(__name__))
 DOWNLOAD = False
 SHAPE = (224, 224)
 IMAGES = os.path.join(DATASET, 'data/fundus_photos/')
-LABEL = 'DR_ICDR'
-TEST_SIZE = 0.3
-UNDERSAMPLE = False
 
-LABELS_PATH = os.path.join(DATASET, 'data/labels_brset.csv')
-LABELS_PATH_TRAIN = os.path.join(DATASET, 'data/train_brset_nooverlap.csv') 
-LABELS_PATH_VAL = os.path.join(DATASET, 'data/val_brset_nooverlap.csv')
-LABELS_PATH_TEST = os.path.join(DATASET, 'data/test_brset_nooverlap.csv')
+LABELS_PATH_TEST = os.path.join(DATASET, 'data/labels_mbrset.csv')
 
-if reproduce:
-    LABELS_PATH_TRAIN = os.path.join(DATASET, 'data/train_brset.csv') 
-    LABELS_PATH_VAL = os.path.join(DATASET, 'data/val_brset.csv')
-    LABELS_PATH_TEST = os.path.join(DATASET, 'data/test_brset.csv') 
-    backbone_mode = 'fine_tune' 
-
-IMAGE_COL = 'image_id'
+LABEL = 'final_icdr'
+IMAGE_COL = 'file'
 
 
 """
@@ -150,43 +125,25 @@ print("Using", torch.cuda.device_count(), "GPUs!")
 
 # Get the dataset
 # df.head()
-df_train = get_dataset(LABELS_PATH_TRAIN, download=DOWNLOAD, info=False)
-df_val = get_dataset(LABELS_PATH_VAL, download=DOWNLOAD, info=False)
-df_test = get_dataset(LABELS_PATH_TEST, download=DOWNLOAD, info=False)
+df_test = get_dataset(LABELS_PATH_TEST, download=DOWNLOAD, info=False, name = 'mBRSET')
 
 # %%
 # Convert into 2 classes:
 
-# Normal = 0; Non-proliferative = 1, 2, 3; Proliferative = 4
+# Normal = 0; Diabetic Retinopathy = 1, 2, 3, 4
 # Map values to categories
-# df[LABEL] = df[LABEL].apply(lambda x: 'Normal' if x == 0 else 'Diabetic Retinopathy')
-df_train[LABEL] = df_train[LABEL].apply(lambda x: 'Normal' if x == 0 else 'Diabetic Retinopathy')
-df_val[LABEL] = df_val[LABEL].apply(lambda x: 'Normal' if x == 0 else 'Diabetic Retinopathy')
 df_test[LABEL] = df_test[LABEL].apply(lambda x: 'Normal' if x == 0 else 'Diabetic Retinopathy')
-df_train['camera'] = df_train['camera'].apply(lambda x: 0 if x == 'Canon CR' else 1 if x == 'NIKON NF5050' else 2)
-df_val['camera'] = df_val['camera'].apply(lambda x: 0 if x == 'Canon CR' else 1 if x == 'NIKON NF5050' else 2)
-df_test['camera'] = df_test['camera'].apply(lambda x: 0 if x == 'Canon CR' else 1 if x == 'NIKON NF5050' else 2)
+
 
 # %% [markdown]
 # ### Dataloaders
 
 # %%
 # Train the one hot encoder on the train set and get the labels for the test and validation sets:
-train_labels, mlb, train_columns = process_labels(df_train, col=LABEL)
+test_labels, mlb, test_columns = process_labels(df_test, col=LABEL)
 
 # %%
 # Define the target image shape
-
-train_transforms = transforms.Compose([
-    transforms.Resize((256, 256)),
-    transforms.RandomCrop(SHAPE),
-    transforms.ToTensor(),
-    transforms.RandomHorizontalFlip(),  # Randomly flip the image horizontally
-    transforms.RandomRotation(50),  # Randomly rotate the image by up to 10 degrees
-])
-
-if NORM_MEAN is not None and NORM_STD is not None:
-    train_transforms.transforms.append(transforms.Normalize(mean=NORM_MEAN, std=NORM_STD))
 
 test_transform = transforms.Compose([
     transforms.Resize(SHAPE),
@@ -195,18 +152,9 @@ test_transform = transforms.Compose([
 
 if NORM_MEAN is not None and NORM_STD is not None:
     test_transform.transforms.append(transforms.Normalize(mean=NORM_MEAN, std=NORM_STD))
- 
+
 # %%
 # Create the custom dataset
-train_dataset = BRSETDataset(
-    df_train, 
-    IMAGE_COL, 
-    IMAGES, 
-    LABEL, 
-    mlb, 
-    train_columns, 
-    transform=train_transforms
-)
 
 test_dataset = BRSETDataset(
     df_test, 
@@ -214,28 +162,11 @@ test_dataset = BRSETDataset(
     IMAGES, 
     LABEL, 
     mlb, 
-    train_columns, 
+    test_columns, 
     transform=test_transform
 )
 
-val_dataset = BRSETDataset(
-    df_val, 
-    IMAGE_COL, 
-    IMAGES, 
-    LABEL, 
-    mlb, 
-    train_columns, 
-    transform=test_transform
-)
 
-if ddp:
-    train_sampler = DistributedSampler(train_dataset, shuffle=True)
-else:
-    train_sampler = None
-
-
-train_dataloader = DataLoader(train_dataset, batch_size=BATCH_SIZE, sampler=train_sampler, shuffle=(train_sampler is None), num_workers=NUM_WORKERS, pin_memory=(device.type == "cuda"))
-val_dataloader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory = (device.type == "cuda"))
 test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory = (device.type == "cuda"))
 
 # %%
@@ -277,47 +208,11 @@ if ddp:
         broadcast_buffers=False,
         find_unused_parameters=False
     )
-
-
-# %% [markdown]
-# ### Training:
-
-# %%
-if LOSS == 'focal_loss':
-    class_distribution = train_dataloader.dataset.labels.sum(axis=0)
-    print(f'Class distribution: {class_distribution}')
-    class_dis = np.array(class_distribution)
-    class_weights =1-class_dis/np.sum(class_dis)
-    weights = torch.tensor(class_weights).to(device)
-    #criterion = FocalLoss()  # Focal Loss
-    criterion = FocalLoss(gamma=2, alpha=weights)
-else:
-    # Assuming train_loader.dataset.labels is a one-hot representation
-    class_indices = np.argmax(train_dataloader.dataset.labels, axis=1)
-
-    # Compute class weights using class indices
-    class_weights = compute_class_weight('balanced', classes=np.unique(class_indices), y=class_indices)
-    class_weights = torch.tensor(class_weights, dtype=torch.float32)
-    criterion = nn.CrossEntropyLoss(weight=class_weights).to(device)
-    #criterion = nn.BCEWithLogitsLoss() # Binary Cross-Entropy Loss
-
-if OPTIMIZER == 'adam':
-    optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate)
-elif OPTIMIZER == 'adamw':
-    optimizer = optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate)
-else:
-    optimizer = optim.SGD(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate, momentum=0.9)
-
-scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=4)
-# %%
-model = train(model, train_dataloader, val_dataloader, criterion, optimizer, DATASET, scheduler, num_epochs=num_epochs, save=True, device=device, 
-              backbone=f'FT_{BACKBONE}_{backbone_mode}_binary{"_reproduce" if reproduce == True else ""}_{LABEL}', train_sampler=train_sampler, is_main_process=is_main_process)
-
 # %% [markdown]
 # ### Test
-
+ 
 # %%
-path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_binary_{LABEL}_best.pth')
+path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_binary_DR_ICDR_best.pth')
 
 # All ranks load the SAME checkpoint
 net = torch.load(path, map_location=device)
@@ -329,9 +224,8 @@ else:
     model.load_state_dict(net, strict=False)
 
 
-# %%
 if is_main_process:
-    test(model, test_dataloader, saliency=True, device=device, save_prob=True,prob_name=f'FT_{BACKBONE}_{backbone_mode}_binary')
+    test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'EX_{BACKBONE}_{backbone_mode}_binary')
 
 #%% frees distributed resources
 if ddp:

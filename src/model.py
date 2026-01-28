@@ -124,6 +124,18 @@ class FoundationalCVModel(torch.nn.Module):
             }
             self.backbone = torch.hub.load('facebookresearch/dinov2', backbone_path[backbone])
 
+        elif backbone in ['dinov3_small', 'dinov3_smallplus', 'dinov3_base', 'dinov3_large', 'dinov3_huge']:
+            # Repo: https://github.com/facebookresearch/dinov3
+            REPO_DIR = '/home/livieymli/dinov3'
+            backbone_path = {
+                'dinov3_small': 'dinov3_vits16',
+                'dinov3_smallplus': 'dinov3_vits16plus',
+                'dinov3_base': 'dinov3_vitb16',
+                'dinov3_large': 'dinov3_vitl16',
+                'dinov3_huge': 'dinov3_vith16'
+            }
+            self.backbone = torch.hub.load(REPO_DIR, backbone_path[backbone], source='local', weights=weights )
+ 
             
         elif backbone in ['convnextv2_tiny', 'convnextv2_base', 'convnextv2_large']:
             # Repo: https://huggingface.co/facebook/convnextv2-base-22k-224
@@ -200,14 +212,20 @@ class FoundationalCVModel(torch.nn.Module):
         
         elif backbone == 'retfound':
             self.backbone = get_retfound(weights=weights, backbone=True)
-        
+
+        elif backbone == 'retfound_d2_s':
+            self.backbone = get_retfound(weights=weights, backbone=True)
+
+        elif backbone == 'retfound_d2_m':
+            self.backbone = get_retfound(weights=weights, backbone=True)
+
         elif backbone == 'visionfm':
             self.backbone = vision_fm.__dict__[weights['arch']](
                     img_size = [weights['image_size']],
                     patch_size = weights['patch_size'],
                     num_classes=0,
                     use_mean_pooling=False)
-            state_dict = torch.load(weights['weights'], map_location="cpu")['teacher']
+            state_dict = torch.load(weights['weights'], map_location="cpu", weights_only=False)['teacher']
             # remove `module.` prefix
             state_dict = {k.replace("module.", ""): v for k, v in state_dict.items()}
             # remove `backbone.` prefix induced by multicrop wrapper
@@ -235,7 +253,7 @@ class FoundationalCVModel(torch.nn.Module):
             #backbone = nn.Sequential(*list(backbone.children())[:-1], nn.Flatten())
 
         else:
-            raise ValueError(f"Unsupported backbone model: {backbone} \n Supported models: 'dinov2_small', 'dinov2_base', 'dinov2_large', 'dinov2_giant', 'convnextv2_tiny', 'convnextv2_base', 'convnextv2_large', 'convnext_tiny', 'convnext_small', 'convnext_base', 'convnext_large', 'swin_tiny', 'swin_small', 'swin_base', 'vit_base', 'vit_large', 'clip_base', 'clip_large', 'retfound'")
+            raise ValueError(f"Unsupported backbone model: {backbone} \n Supported models: 'dinov2_small', 'dinov2_base', 'dinov2_large', 'dinov2_giant', 'convnextv2_tiny', 'convnextv2_base', 'convnextv2_large', 'convnext_tiny', 'convnext_small', 'convnext_base', 'convnext_large', 'swin_tiny', 'swin_small', 'swin_base', 'vit_base', 'vit_large', 'clip_base', 'clip_large', 'retfound','retfound_d2_s','retfound_d2_m','visionfm', 'resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152', 'resnet200d', 'dinov3_small', 'dinov3_smallplus', 'dinov3_base', 'dinov3_large', 'dinov3_huge'.")
             
         # Set the model to evaluation or fine-tuning mode
         self.mode = mode

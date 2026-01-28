@@ -6,7 +6,16 @@ library(mcca)
 rm(list = ls(all.names = TRUE)) 
 gc()
 
-prob_root <- file.path(getwd(), "output", "predicted_probabilities", "mBRSET_EXEVAL")
+library(optparse)
+
+option_list <- list(
+  make_option("--prob_root", default = "BRSET_TL_b")
+)
+
+opts <- parse_args(OptionParser(option_list = option_list))
+path <- opts$prob_root
+prob_root <- file.path(getwd(), "output", "predicted_probabilities", path)
+# prob_root <- '/home/livieymli/brset_analysis/BRSET/output/predicted_probabilities/BRSET_TL_b'
 setwd(prob_root)
 files <- list.files(prob_root)
 files <- sort(files)
@@ -44,12 +53,12 @@ pdi_category_results <- data.frame(
 for (i in seq_along(files)) {
   name <- files[i]
   if (grepl("^y.*\\.csv$", name) && !grepl("reproduced", name) && !grepl("pdi", name) && !grepl("ensemble", name)) {
-    print(name)
+    # print(name)
     parts <- unlist(strsplit(name, "_"))
     model <- if (grepl("retfound_d2_s", name)) {
       "RETFound DINOv2 Shanghai"
     } else if (grepl("retfound_d2_m", name)) {
-      "RETFound DINOv2 Shanghai"
+      "RETFound DINOv2 MEH"
     } else if (grepl("retfound", name)) {
       "RETFound"
     } else if (grepl("dinov3_large", name)) {
@@ -70,9 +79,9 @@ for (i in seq_along(files)) {
       "Unknown Model"
     }
     if (grepl("_fine_tune_", name)) {
-      mode<-"Full" # Head, Full
+      mode<-"Full fine-tune" # Head, Full
     } else {
-      mode<-"Head"
+      mode<-"Head fine-tune"
     }
     df<-read.csv(name)
     
@@ -156,8 +165,9 @@ for (i in seq_along(files)) {
     ))
   }
 }
-print(pdi_results)
+# print(pdi_results)
 
-write.csv(pdi_results, "pdi_results.csv", row.names = FALSE)
+write.csv(pdi_results, file.path(prob_root, "summary", "PDI_results.csv"), row.names = FALSE)
 
-write.csv(pdi_category_results, "pdi_category_results.csv", row.names = FALSE)
+write.csv(pdi_category_results, file.path(prob_root, "summary", "PDI_category_results.csv"), row.names = FALSE)
+gc()

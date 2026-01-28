@@ -1,20 +1,23 @@
 # %%
+import gc
 import os
 import pandas as pd
 import numpy as np
-import sklearn
 from sklearn.utils import resample
 from sklearn.metrics import roc_auc_score
-from itertools import combinations
-from tqdm import tqdm
-
+import argparse
 
 # %%
+parser = argparse.ArgumentParser()
+parser.add_argument("-p", "--prob_root", default="BRSET_TL_b", help="Path to predicted probabilities directory")
+path = parser.parse_args().prob_root
+
 DATASET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-prob_root = os.path.join(DATASET, "output/predicted_probabilities/BRSET_TL_b")
+prob_root = os.path.join(DATASET, "output/predicted_probabilities", path) 
 files = os.listdir(prob_root)
+files = [f for f in files if f.startswith('y_') and f.endswith('.csv') and not any(x in f for x in ('convnextv2', 'resnet'))]
 files.sort()
-print(files)
+# print(files)
 
 # %%
 def bootstrap_ensemble(df, n_iterations=1000):
@@ -75,10 +78,10 @@ df_result = pd.DataFrame(columns=['model', 'mode', 'auc_macro', 'auc_0', 'auc_1'
 df_plot = pd.DataFrame(columns=['model', 'mode', 'mean_auc', 'lower_auc', 'upper_auc'])
 for filename in files:
     if filename.endswith(".csv") and filename.startswith("y_") and 'reproduce' not in filename:
-        print(f"File: {filename}")
+        # print(f"File: {filename}")
         df = pd.read_csv(os.path.join(prob_root, filename))
         model = 'RETFound DINOv2 Shanghai' if 'retfound_d2_s' in filename else \
-                'RETFound DINOv2 Shanghai' if 'retfound_d2_m' in filename else \
+                'RETFound DINOv2 MEH' if 'retfound_d2_m' in filename else \
                 'RETFound' if 'retfound' in filename else \
                 'DINOv3 Large' if 'dinov3_large' in filename else \
                 'VisionFM' if 'visionfm' in filename else \
@@ -89,7 +92,7 @@ for filename in files:
                 'ResNet50' if 'resnet50' in filename else \
                 'Unknown Model'
 
-        mode = 'Head fine-tune' if 'eval' in filename else 'Full fine-tuned'
+        mode = 'Head fine-tune' if 'eval' in filename else 'Full fine-tune'
         # Function to process and append results
         def process_and_append(df_sub, name_prefix=""):
             # acc_scores, auc_scores = bootstrap_ensemble(df_sub)
@@ -107,10 +110,10 @@ for filename in files:
             new_results_row = {
                 'model': model,
                 'mode': mode,
-                'auc_macro': f'{mean_auc:.2f} [{lower_auc:.2f}-{upper_auc:.2f}]',
-                'auc_0': f'{mean_auc_0:.2f} [{lower_auc_0:.2f}-{upper_auc_0:.2f}]',
-                'auc_1': f'{mean_auc_1:.2f} [{lower_auc_1:.2f}-{upper_auc_1:.2f}]',
-                'auc_2': f'{mean_auc_2:.2f} [{lower_auc_2:.2f}-{upper_auc_2:.2f}]'
+                'auc_macro': f'{mean_auc:.2f} [{lower_auc:.2f}, {upper_auc:.2f}]',
+                'auc_0': f'{mean_auc_0:.2f} [{lower_auc_0:.2f}, {upper_auc_0:.2f}]',
+                'auc_1': f'{mean_auc_1:.2f} [{lower_auc_1:.2f}, {upper_auc_1:.2f}]',
+                'auc_2': f'{mean_auc_2:.2f} [{lower_auc_2:.2f}, {upper_auc_2:.2f}]'
             }
 
             new_plot_row = {
@@ -132,8 +135,9 @@ for filename in files:
             df = df.drop(columns=['y_camera'])
         process_and_append(df)
     
-# print(df_result)
-# df_result.to_csv(os.path.join(prob_root, 'auroc_results.csv'), index=False)
+# # print(df_result)
+os.makedirs(os.path.join(prob_root, 'summary'), exist_ok=True)
+df_result.to_csv(os.path.join(prob_root, 'summary', 'AUROC_results.csv'), index=False)
 # pdi_result = pd.read_csv(os.path.join(prob_root, 'pdi_results.csv'))
 # df_plot = df_plot.merge(pdi_result, on=['model', 'mode'], how='left')
 # df_plot.to_csv(os.path.join(prob_root, 'ensemble_results.csv'), index=False)
@@ -143,20 +147,17 @@ import matplotlib.pyplot as plt
 # Create a label combining model and mode for y-axis
 df_plot = df_plot[~df_plot['model'].str.contains('resnet|convnext', case=False)]
 df_plot['label'] = df_plot['model'] + ' - ' + df_plot['mode']
-
+df_plot[['mean_auc', 'lower_auc', 'upper_auc']] = df_plot[['mean_auc', 'lower_auc', 'upper_auc']].astype(float)
 # Assign color: green if 'Head' in mode, else blue
 df_plot['color'] = df_plot['mode'].apply(lambda x: '#E1BE6A' if 'Head' in x else '#40B0A6')
-
-# Sort by model and mode for better grouping
+# Sort by model and mode so rows are reversed than df_plot
 df_plot_sorted = df_plot.sort_values(['model', 'mode'], ascending=[False, True])
+fig, ax = plt.subplots(1, 1, figsize=(9, 4))
+ax.set_ymargin(0.15)
 
-
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 2), sharey=True)
-ax1.set_ymargin(0.15)
-ax2.set_ymargin(0.15)
 # --- AUC plot ---
 for _, row in df_plot_sorted.iterrows():
-    ax1.errorbar(
+    ax.errorbar(
         row['mean_auc'],
         row['label'],
         xerr=[[row['mean_auc'] - row['lower_auc']], [row['upper_auc'] - row['mean_auc']]],
@@ -164,72 +165,43 @@ for _, row in df_plot_sorted.iterrows():
         ls='-.',
         color=row['color'],
         ecolor='gray',
-        capsize=5
+        capsize=7
     )
-    ax1.text(
+    ax.text(
         1.01,
         row['label'],
         f"{row['mean_auc']:.2f} [{row['lower_auc']:.2f}, {row['upper_auc']:.2f}]",
         va='center',
+        fontsize=12
+    )
+yd = 0.14
+ys = [0.15, 0.15+yd, 0.15+2*yd, 0.15+3*yd, 0.15+4*yd, 0.85]
+labels = df_plot_sorted['model'].unique()
+for m, y in zip(labels, ys):
+    ax.text(
+        -0.05, y, m,
+        transform=ax.transAxes,
+        va="center",
+        ha="right",
         fontsize=10
     )
-# ax1.set_xlabel('AUROC (95% CI)')
-ax1.set_yticks([])
-ax1.set_xlim(0.5, 1)
-# ax1.set_title('AUROC')
 
-# --- PDI plot ---
-for _, row in df_plot_sorted.iterrows():
-    ax2.errorbar(
-        row['mean_pdi'],
-        row['label'],
-        xerr=[[row['mean_pdi'] - row['lower_pdi']], [row['upper_pdi'] - row['mean_pdi']]],
-        fmt='o',
-        ls='-',
-        color=row['color'],
-        ecolor='gray',
-        capsize=5
-    )
-    ax2.text(
-        1.01,
-        row['label'],
-        f"{row['mean_pdi']:.2f} [{row['lower_pdi']:.2f}, {row['upper_pdi']:.2f}]",
-        va='center',
-        fontsize=10
-    )
-# ax2.set_xlabel('PDI (95% CI)')
-ax2.set_yticks([])
-ax2.set_xlim(0.33, 1)
-# ax2.set_title('PDI')
-
-# Shared y-label
-# fig.text(0.04, 0.5, 'Model', va='center', rotation='vertical', fontsize=12)
-
+ax.set_yticks([])
+ax.set_xlim(0.5, 1)
+ax.set_title("Area Under the ROC Curve", fontsize=14, pad=10)
 # Custom legend
 import matplotlib.patches as mpatches
 legend_handles = [
     mpatches.Patch(color='#E1BE6A', label='Head fine-tune'),
-    mpatches.Patch(color='#40B0A6', label='Full fine-tuned')
+    mpatches.Patch(color='#40B0A6', label='Full fine-tune')
 ]
-# Set ncol=1 for a vertical legend
-ax2.legend(handles=legend_handles, title='Training mode', bbox_to_anchor=(1.45, 1), loc='upper left', borderaxespad=0., ncol=1, frameon=True)
-# ax2.legend(handles=legend_handles, title='Training mode', bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
-
-# Add a text box annotation to the figure (example: add to ax1)
-# ax1.text(
-#     -0.2,  # x position in data coordinates
-#     0.5,   # y position in axes fraction (0=bottom, 1=top)
-#     "Dinov2\n\n\n\nRETFound\n\n\n\nVisionFM", 
-#     transform=ax1.get_yaxis_transform(),  # so y is in axes fraction
-#     fontsize=8
-#     # bbox=dict(facecolor='white', edgecolor='black', boxstyle='round,pad=0.5')
-# )
+ax.legend(handles=legend_handles, title='Training mode', bbox_to_anchor=(0.04, 0.96), loc='upper left', borderaxespad=0., ncol=1, frameon=True)
 
 plt.tight_layout(rect=[0.05, 0, 1, 1])
 plt.show()
-fig.savefig(os.path.join(prob_root, 'forest_plot.png'), bbox_inches='tight', dpi=300)
+fig.savefig(os.path.join(prob_root, 'summary', 'AUROC_forest_plot.png'), bbox_inches='tight', dpi=300)
 
 
+gc.collect()
 
-
-
+# %%
