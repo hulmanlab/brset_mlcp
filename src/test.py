@@ -28,7 +28,7 @@ def get_saliency_map(model, input_image):
     #saliency_map = input_image.grad.data.abs().max(1)[0]
     return saliency_map
 
-def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, prob_name = None):
+def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, prob_name = None, image_ids = None, lateralities = None):
     """
     Evaluates the model on the training and test data respectively
     1. Predictions on test data
@@ -41,14 +41,23 @@ def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, 
     y_pred: numpy array with predicted test labels
     """
     # Save y_test and y_pred to a CSV file
-    print(y_test,y_prob)
+    print(
+        "Shapes:",
+        "y_test =", getattr(y_test, "shape", None),
+        "y_prob =", getattr(y_prob, "shape", None),
+        "y_camera =", getattr(y_camera, "shape", None),
+        "image_ids =", getattr(np.array(image_ids), "shape", None),
+        "laterality =", getattr(np.array(lateralities), "shape", None),
+    )
     if save_prob:
         if len(y_prob.shape) > 1:
             results_df = pd.DataFrame({f'y_test_{i}': y_test[:, i] for i in range(y_test.shape[1])})
             results_df = pd.concat([results_df, pd.DataFrame({f'y_prob_{i}': y_prob[:, i] for i in range(y_prob.shape[1])})], axis=1)
             results_df["y_camera"] = y_camera
+            results_df["image_ids"] = np.array(image_ids)
+            results_df["laterality"] = np.array(lateralities)
         else:
-            results_df = pd.DataFrame({'y_test': y_test[:,1], 'y_pred': y_prob, 'y_camera': y_camera})
+            results_df = pd.DataFrame({'y_test': y_test[:,1], 'y_pred': y_prob, 'y_camera': y_camera, 'image_ids': np.array(image_ids), 'laterality': np.array(lateralities)})
         
         results_df.to_csv(f'output/predicted_probabilities/y_{prob_name}.csv', index=False)
         print('saved')
@@ -95,7 +104,6 @@ def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, 
                     y_test,
                     y_prob,
                     name=f"ROC curve",
-                    color='aqua',
                     ax=ax,
                 )
         else:
@@ -103,7 +111,6 @@ def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, 
                     y_test,
                     y_pred,
                     name=f"ROC curve",
-                    color='aqua',
                     ax=ax,
                 )
         plt.plot([0, 1], [0, 1], "k--", label="ROC curve for chance level (AUC = 0.5)")
@@ -121,7 +128,6 @@ def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, 
                     y_onehot_test[:, class_id],
                     y_onehot_pred[:, class_id],
                     name=f"ROC curve for {label_binarizer.classes_[class_id]}",
-                    color=color,
                     ax=ax,
                 )
         else:
@@ -130,7 +136,6 @@ def test_model(y_test, y_pred, y_prob=None, y_camera = None, save_prob = False, 
                     y_onehot_test[:, class_id],
                     y_prob[:, class_id],
                     name=f"ROC curve for {label_binarizer.classes_[class_id]}",
-                    color=color,
                     ax=ax,
                 )
 
@@ -187,10 +192,10 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
     eval_images_per_class = {i: [] for i in range(num_classes)}
     
     with torch.no_grad():
-        y_true, y_pred, y_camera = [], [], []
+        y_true, y_pred, y_camera, image_ids, lateralities = [], [], [], [], []
         for batch in tqdm(test_dataloader, total=len(test_dataloader)):
             # image, labels, camera =  batch['image'].to(device), batch['labels'].to(device), batch['camera'].to(device)
-            image, labels =  batch['image'].to(device), batch['labels'].to(device)
+            image, labels = batch['image'].to(device), batch['labels'].to(device)
             outputs = model(image)
 
             if (output_size == 1):
@@ -201,6 +206,13 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
             y_true.extend(labels.cpu().numpy())
             y_pred.extend(preds.cpu().numpy())
             # y_camera.extend(camera.cpu().numpy())
+            
+            if isinstance(batch['image_id'], list):
+                image_ids.extend(batch['image_id'])
+            else:
+                image_ids.extend(batch['image_id'].numpy())
+
+            lateralities.extend(batch['laterality'].numpy())
 
             # Get 5 images per class for saliency maps
             for i in range(num_classes):
@@ -223,7 +235,7 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
         if (output_size == 2):
             y_pred = y_pred[:, 1]
         
-        test_model(y_true, y_pred_one_hot, y_pred, None, save_prob, prob_name)
+        test_model(y_true, y_pred_one_hot, y_pred, None, save_prob, prob_name, image_ids, lateralities)
     
     if saliency:
         if save:
@@ -257,6 +269,4 @@ def test(model, test_dataloader, saliency=True, device='cpu', save=False, save_p
                 if save:
                     plt.savefig(f'saliency_maps/saliency_map_class_{img_class}_image_{i}.pdf')
                     i+=1
-                    
-                plt.show()
 

@@ -381,14 +381,21 @@ class FoundationalCVModelWithClassifier(torch.nn.Module):
         
         if backbone_mode == 'eval':
             self.backbone.eval()
+            self.backbone.requires_grad_(False)
         elif backbone_mode == 'fine_tune':
             self.backbone.train()
             
         if mode == 'eval':
             self.eval()
+            self.requires_grad_(False)
         elif mode == 'fine_tune':
             self.train()
-            
+
+        
+        total = sum(p.numel() for p in self.parameters())
+        trainable = sum(p.numel() for p in self.parameters() if p.requires_grad)
+        print(f"Trainable parameters: {trainable:,}/{total:,}")
+        
     def calculate_backbone_out(self):
         sample_input = torch.randn(1, 3, 224, 224)
         

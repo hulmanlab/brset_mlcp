@@ -203,18 +203,27 @@ def process_labels(df, col='answer', mlb=None, train_columns=None):
     """
     if mlb is None:
         mlb = MultiLabelBinarizer()
-        if df[col].dtype == int:
-            label = df[col]
-        else:
-            labels = df[col].apply(lambda x: set(x.split(', ')))
-
         if df[col].dtype == int and (len(df[col].unique()) == 2):
+            label = df[col]
             train_columns = col
             one_hot_labels = label
         else:
+            labels = df[col].apply(lambda x: set(x.split(', ')))
             one_hot_labels = pd.DataFrame(mlb.fit_transform(labels), columns=mlb.classes_)
-            # Save the columns from the training set
             train_columns = one_hot_labels.columns
+
+        # if df[col].dtype == int:
+        #     label = df[col]
+        # else:
+        #     labels = df[col].apply(lambda x: set(x.split(', ')))
+
+        # if df[col].dtype == int and (len(df[col].unique()) == 2):
+        #     train_columns = col
+        #     one_hot_labels = label
+        # else:
+        #     one_hot_labels = pd.DataFrame(mlb.fit_transform(labels), columns=mlb.classes_)
+        #     # Save the columns from the training set
+        #     train_columns = one_hot_labels.columns
 
         return one_hot_labels, mlb, train_columns
 
@@ -265,6 +274,13 @@ class BRSETDataset(Dataset):
             self.camera = df['camera'].values
         else:
             self.camera = np.array([3] * len(df))
+        if 'laterality' in df.columns:
+            laterality_map = {'left': 0, 'right': 1}
+            self.laterality = df['laterality'].map(laterality_map).values
+        elif 'exam_eye' in df.columns:
+            self.laterality = df['exam_eye'].values
+        else:
+            self.laterality = np.array([3] * len(df))
         self.images_dir = images_dir
         self.shape = shape
         self.transform = transform or transforms.Compose([
@@ -292,7 +308,8 @@ class BRSETDataset(Dataset):
         img = self.transform(img)
 
         return {
-            'image_id' : self.image_data[idx],
+            'image_id' : self.image_data[idx],  
+            'laterality' : self.laterality[idx],
             # TODO: camera need to be one hot encoded if used
             # 'camera': torch.FloatTensor(self.camera[idx]),
             'image': torch.FloatTensor(img),
