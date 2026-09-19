@@ -34,8 +34,8 @@ def load_and_merge(base_dir, items, suffix=""):
         dfs
     )
 # %%
-# for folder in binary:
-for folder in ternary:
+for folder in binary:
+# for folder in ternary:
     
     base_dir = f"/home/livieymli/brset_analysis/BRSET/output/predicted_probabilities/{folder}/summary"
     if '_b' not in folder:

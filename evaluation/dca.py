@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--prob_root", default="BRSET_TL_b", help="Path to predicted probabilities directory")
 path = parser.parse_args().prob_root
-
+# path = 'mBRSET_EX_b'
 DATASET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 prob_root = os.path.join(DATASET, "output/predicted_probabilities", path)
 models = [
@@ -21,7 +21,7 @@ models = [
     "dinov2",
     "eyeclip"
 ]
-files = [x for x in os.listdir(prob_root) if any(model in x for model in models)]
+files = [x for x in os.listdir(prob_root) if any(model in x for model in models) and x.startswith('y_') and x.endswith('.csv') and not any(y in x for y in ('convnextv2', 'resnet', 'recalib'))]
 files.sort()
 # print(files)
 # %%
@@ -46,7 +46,7 @@ for filename in files:
         thresholds=np.arange(0, 0.5, 0.05),
     )
     os.makedirs(os.path.join(prob_root, "dca_plots"), exist_ok=True)
-    plot_graphs(plot_df=dca_multi_df, y_limits=[-0.3, 0.3], graph_type="net_benefit", file_name=os.path.join(prob_root, "dca_plots", f"{model}_{mode}.png"))
+    plot_graphs(plot_df=dca_multi_df, y_limits=[-0.1, 0.3], graph_type="net_benefit", file_name=os.path.join(prob_root, "dca_plots", f"{model}_{mode}.png"))
     plt.close('all')
     
 

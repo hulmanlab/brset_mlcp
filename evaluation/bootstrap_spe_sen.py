@@ -4,16 +4,14 @@ import gc
 import os
 import pandas as pd
 import numpy as np
+from tqdm import tqdm
 from sklearn.utils import resample
 from sklearn.metrics import confusion_matrix
 
 # %%
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--prob_root", default="mBRSET_EX_b", choices=['BRSET_TL_b', 'mBRSET_EX_b', 'mBRSET_TL_b'], 
-                        help="Path to predicted probabilities directory (binary only)")
-    parser.add_argument("-t", "--threshold", type=float, default=0.4,
-                        help="Decision threshold")
+    parser.add_argument("-r", "--recalibration", type=bool, default=False, help="Whether to use recalibrated probabilities")
     return parser.parse_args()
 
 
@@ -41,8 +39,6 @@ def bootstrap_cm(df, threshold, n_iterations=1000):
     y_true = df.iloc[:, 0].astype(int).to_numpy()
     y_score = df.iloc[:, 1].to_numpy()
     y_pred = (y_score >= threshold).astype(int)
-
-
         
     # Run bootstrap
     sen, spe, ppv, npv = [], [], [], []
@@ -68,52 +64,70 @@ def CI95(scores):
     return mean, lower, upper
 
 # %%
-def main(path, threshold):
+def main(recalibration):
     DATASET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    prob_root = os.path.join(DATASET, "output/predicted_probabilities", path)
+    for path in ['BRSET_TL_b', 'mBRSET_EX_b', 'mBRSET_TL_b']:
+        prob_root = os.path.join(DATASET, "output/predicted_probabilities", path)
 
-    files = [
-        f for f in os.listdir(prob_root)
-        if f.startswith('y_')
-        and f.endswith('.csv')
-        and not any(x in f for x in ('convnextv2', 'resnet'))
-    ]
+        files = [
+            f for f in os.listdir(prob_root)
+            if f.startswith('y_')
+            and f.endswith('.csv')
+            and not any(x in f for x in ('convnextv2', 'resnet', 'dinov2', 'retfound_d2'))
+        ]
 
-    df_results = pd.DataFrame(
-        columns=['model', 'mode', 'Sensitivity', 'Specificity', 'PPV', 'NPV']
-    )
+        if recalibration:
+            files = [f for f in files if 'recalib' in f]
+        else:
+            files = [f for f in files if 'recalib' not in f]
 
-    for filename in files:
-        model, mode = metadata_from_filename(filename)
-        df = pd.read_csv(os.path.join(prob_root, filename))
-        
-        sen, spe, ppv, npv = bootstrap_cm(df, threshold)
+        df_results = pd.DataFrame(
+            columns=['threshold','model', 'mode', 'Sensitivity', 'Specificity', 'PPV', 'NPV', 'Sen_mean', 'Sen_lower', 'Sen_upper', 'Spe_mean', 'Spe_lower', 'Spe_upper', 'PPV_mean', 'PPV_lower', 'PPV_upper', 'NPV_mean', 'NPV_lower', 'NPV_upper']
+        )
 
-        mean_sen, lower_sen, upper_sen = CI95(sen)
-        mean_spe, lower_spe, upper_spe = CI95(spe)
-        mean_ppv, lower_ppv, upper_ppv = CI95(ppv)
-        mean_npv, lower_npv, upper_npv = CI95(npv)
-        
-        new_results_row = {
-                'model': model,
-                'mode': mode,
-                'Sensitivity': f'{mean_sen:.2f} [{lower_sen:.2f}, {upper_sen:.2f}]',
-                'Specificity': f'{mean_spe:.2f} [{lower_spe:.2f}, {upper_spe:.2f}]',
-                'PPV': f'{mean_ppv:.2f} [{lower_ppv:.2f}, {upper_ppv:.2f}]',
-                'NPV': f'{mean_npv:.2f} [{lower_npv:.2f}, {upper_npv:.2f}]'
-            }
-        df_results = pd.concat([df_results, pd.DataFrame([new_results_row])], ignore_index=True)
-        
-    df_results = df_results.sort_values(['model', 'mode'], ascending=[True, False])
-    df_results.to_csv(
-        os.path.join(prob_root, 'summary', f'cm_{int(threshold*100)}.csv'),
-        index=False
-    )
+        for filename in tqdm(files):
+            model, mode = metadata_from_filename(filename)
+            df = pd.read_csv(os.path.join(prob_root, filename))
+            for threshold in [0.1, 0.2, 0.3]:
+                sen, spe, ppv, npv = bootstrap_cm(df, threshold)
+                mean_sen, lower_sen, upper_sen = CI95(sen)
+                mean_spe, lower_spe, upper_spe = CI95(spe)
+                mean_ppv, lower_ppv, upper_ppv = CI95(ppv)
+                mean_npv, lower_npv, upper_npv = CI95(npv)
+                
+                new_results_row = {
+                        'threshold': threshold,
+                        'model': model,
+                        'mode': mode,
+                        'Sensitivity': f'{mean_sen:.2f} [{lower_sen:.2f}, {upper_sen:.2f}]',
+                        'Specificity': f'{mean_spe:.2f} [{lower_spe:.2f}, {upper_spe:.2f}]',
+                        'PPV': f'{mean_ppv:.2f} [{lower_ppv:.2f}, {upper_ppv:.2f}]',
+                        'NPV': f'{mean_npv:.2f} [{lower_npv:.2f}, {upper_npv:.2f}]',
+                        'Sen_mean': mean_sen,
+                        'Sen_lower': lower_sen,
+                        'Sen_upper': upper_sen,
+                        'Spe_mean': mean_spe,
+                        'Spe_lower': lower_spe,
+                        'Spe_upper': upper_spe,
+                        'PPV_mean': mean_ppv,
+                        'PPV_lower': lower_ppv,
+                        'PPV_upper': upper_ppv,
+                        'NPV_mean': mean_npv,
+                        'NPV_lower': lower_npv,
+                        'NPV_upper': upper_npv
+                    }
+                df_results = pd.concat([df_results, pd.DataFrame([new_results_row])], ignore_index=True)
+            
+        df_results = df_results.sort_values(['threshold', 'model', 'mode'], ascending=[True, True, False])
+        df_results.to_csv(
+            os.path.join(prob_root, 'summary', f'cm{'_recalib' if recalibration else ""}.csv'),
+            index=False
+        )
     gc.collect()
 
 #%%
 if __name__ == "__main__":
     args = get_args()
-    main(args.prob_root, args.threshold)
+    main(args.recalibration)
 
 #%%

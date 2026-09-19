@@ -12,19 +12,19 @@ from tqdm import tqdm
 # %%
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", "--path", default="BRSET_TL_b", required=False, help="Path to predicted probabilities directory")
-path = parser.parse_args().prob_root
-# path = 'mBRSET_TL_b'
+path = parser.parse_args().path
+path = 'mBRSET_EX_b'
 DATASET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 prob_root = os.path.join(DATASET, "output/predicted_probabilities", path)
 files = os.listdir(prob_root)
-files = [f for f in files if f.startswith('y_') and f.endswith('.csv') and not any(x in f for x in ('convnextv2', 'resnet'))]
+files = [f for f in files if f.startswith('y_') and f.endswith('.csv') and not any(x in f for x in ('convnextv2', 'resnet', 'recalib', 'retfound_d2'))]
 files.sort()
 
 pairs = [
-    (f, f.replace('_eval_binary.csv', '_fine_tune_binary.csv')
-    .replace('_eval_3class.csv', '_fine_tune_3class.csv'))
+    (f, f.replace('_fine_tune_binary.csv', '_eval_binary.csv')
+    .replace('_fine_tune_3class.csv', '_eval_3class.csv'))
     for f in files
-    if f.endswith(('_eval_binary.csv', '_eval_3class.csv'))
+    if f.endswith(('_fine_tune_binary.csv', '_fine_tune_3class.csv'))
 ]
 
 
@@ -46,61 +46,65 @@ def metadata_from_filename(filename):
     return model, mode
 # %%
 def bootstrap_ensemble(df1, df2, n_iterations=1000):
-    for df in (df1, df2):
-        df.drop(columns=['y_camera'], inplace=True, errors='ignore')
-    arr1 = df1.to_numpy()
-    arr2 = df2.to_numpy()
-    if arr1.shape[1] > 3:
-        y_true = np.array(arr1[:, :3].astype(int))
-        y_score1 = arr1[:, 3:]
-    else:
-        y_true = np.array(arr1[:, 0].astype(int))
-        y_score1 = arr1[:, 1]
-    y_score1 = np.where(y_score1 == 0, 0.000001, y_score1)
-    y_score1 = np.where(y_score1 == 1, 0.999999, y_score1) # shape: (n, 4)
-    if arr2.shape[1] > 3:
-        y_score2 = arr2[:, 3:]
-    else:
-        y_score2 = arr2[:, 1]
-    y_score2 = np.where(y_score2 == 0, 0.000001, y_score2)
-    y_score2 = np.where(y_score2 == 1, 0.999999, y_score2) # shape: (n, 4)
+    if 'person_id' not in df1.columns:
+        df1["person_id"] = df1["image_ids"].astype(str).str.split(".").str[0]
+        df2["person_id"] = df2["image_ids"].astype(str).str.split(".").str[0]
+    # Optional: store as numeric
+    df1["person_id"] = pd.to_numeric(df1["person_id"])
+    df2["person_id"] = pd.to_numeric(df2["person_id"])
 
-    # Run bootstrap
-    # acc_scores = []
+    # Get unique persons
+    persons = df1["person_id"].unique()
+    n_persons = len(persons)
     d_auc = []
     d_auc_0 = []
     d_auc_1 = []
     d_auc_2 = []
-
-
+    # Per-person bootstrap sample
     for _ in range(n_iterations):
-        # Generate a random sample of indices
-        random_state = np.random.randint(0, 1e6)
-        y_resample, y_score_resample1 = resample(y_true, y_score1, replace=True, random_state=random_state)
-        _, y_score_resample2 = resample(y_true, y_score2, replace=True, random_state=random_state)
-        # acc = accuracy_score(np.argmax(y_resample,axis=1), np.argmax(y_score_resample, axis=1))
-        # acc_scores.append(acc)
-        auc1 = roc_auc_score(y_resample, y_score_resample1, multi_class='ovr', average='macro')
-        auc2 = roc_auc_score(y_resample, y_score_resample2, multi_class='ovr', average='macro')
-        d_auc.append(auc1-auc2)
-        
+        boot_df1 = pd.DataFrame()
+        boot_df2 = pd.DataFrame()
 
-        # Compute class-wise AUCs
-        if arr1.shape[1] > 3:
-            class_auc1 = roc_auc_score(y_resample, y_score_resample1, average=None, multi_class='ovr')
-            class_auc2 = roc_auc_score(y_resample, y_score_resample2, average=None, multi_class='ovr')
-            d_auc_0.append(class_auc1[0] - class_auc2[0])
-            d_auc_1.append(class_auc1[1] - class_auc2[1])
-            d_auc_2.append(class_auc1[2] - class_auc2[2])
+        sampled_persons = resample(
+            persons,
+            replace=True,
+            n_samples=n_persons
+        )
+
+        # Build bootstrap DataFrame
+        boot_df1 = pd.concat(
+            [df1[df1["person_id"] == person_id] for person_id in sampled_persons],
+            ignore_index=True
+        )
+        boot_df2 = pd.concat(
+            [df2[df2["person_id"] == person_id] for person_id in sampled_persons],
+            ignore_index=True
+        )
+
+        if 'y_pred' not in boot_df1.columns:
+            y_test1 = boot_df1.to_numpy()[:, :3].astype(int)
+            y_pred1 = boot_df1.to_numpy()[:, 3:6]
+            y_test2 = boot_df2.to_numpy()[:, :3].astype(int)
+            y_pred2 = boot_df2.to_numpy()[:, 3:6]
+            class_auc1 = roc_auc_score(y_test1, y_pred1, average=None, multi_class='ovr')
+            class_auc2 = roc_auc_score(y_test2, y_pred2, average=None, multi_class='ovr')
+            d_auc_1.append(class_auc1[0]-class_auc2[0])
+            d_auc_0.append(class_auc1[1]-class_auc2[1])
+            d_auc_2.append(class_auc1[2]-class_auc2[2])
+
         else:
-            d_auc_0.append(np.nan)
-            d_auc_1.append(np.nan)
-            d_auc_2.append(np.nan)
+            y_test1 = boot_df1['y_test']
+            y_pred1 = boot_df1['y_pred']
+            y_test2 = boot_df2['y_test']
+            y_pred2 = boot_df2['y_pred']
 
-        
-        
+        auc1 = roc_auc_score(y_test1, y_pred1, multi_class='ovr', average='macro')
+        auc2 = roc_auc_score(y_test2, y_pred2, multi_class='ovr', average='macro')
+        d_auc.append(auc1-auc2)
+
     # return  acc_scores, auc_scores
     return d_auc, d_auc_0, d_auc_1, d_auc_2
+
 
 def CI95(scores):
     mean_auc = np.mean(scores)
@@ -124,7 +128,7 @@ for pair in tqdm(pairs):
     mode = f"{mode1} vs {mode2}"
     d_auc_scores, d_auc_0_scores, d_auc_1_scores, d_auc_2_scores = bootstrap_ensemble(df1, df2)
     mean_d_auc, lower_d_auc, upper_d_auc = CI95(d_auc_scores)
-    if df1.shape[1] > 3:
+    if 'y_pred' not in df1.columns:
         mean_d_auc_0, lower_d_auc_0, upper_d_auc_0 = CI95(d_auc_0_scores)
         mean_d_auc_1, lower_d_auc_1, upper_d_auc_1 = CI95(d_auc_1_scores)
         mean_d_auc_2, lower_d_auc_2, upper_d_auc_2 = CI95(d_auc_2_scores)
@@ -148,6 +152,6 @@ for pair in tqdm(pairs):
         
     
 #%%
-df_result.to_csv(os.path.join(prob_root, 'summary', 'AUROC_diff_mode_results.csv'), index=False)
+df_result.to_csv(os.path.join(prob_root, 'summary', 'AUROC_diff_mode_results_per_person.csv'), index=False)
 gc.collect()
 #%%
