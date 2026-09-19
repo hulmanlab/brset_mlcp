@@ -17,3 +17,6 @@ transformers==4.35.0
 umap-learn==0.5.4
 timm==0.9.12
 gdown==4.7.1
+r-glmnet
+r-pec
+r-riskregression

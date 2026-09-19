@@ -77,12 +77,26 @@ Make sure there's Python installed. Install the required packages using requirem
 ```bash
 pip install -r requirements.txt
 ```
+For the evaluation of the models, make sure there's R installed. The following R packages are also needed:
+* caret
+* mcca
+* optparse
+* CalibrationCurves
+* patchwork
+* PredictABEL
 
 Execute the script :
 
 ```bash
-python template_3class_DR.py -b convnextv2_large -bm fine_tune
+python template_3class_DR.py -b dinov3_large -bm fine_tune
 ```
+
+To evaluate the models:
+
+```bash
+sh BRSET/evaluation/eval_all.sh BRSET_TL_b
+```
+
 
 #### 2. On a SLURM Cluster (with GPU)
 
@@ -107,4 +121,3 @@ python template_3class_DR.py -b convnextv2_large -bm fine_tune
 cd <dir>/BRSET
 python template_3class_DR.py -b convnextv2_large -bm fine_tune
 ```
-

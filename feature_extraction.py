@@ -34,25 +34,25 @@ import argparse
 
 # %% [markdown]
 # Parse command-line arguments
-parser = argparse.ArgumentParser(description="Set backbone and backbone_mode for the model.")
-parser.add_argument('-b','--backbone', type=str, required=True, choices=['retfound_d2_s','retfound_d2_m','dinov3_large','dinov2_large','visionfm', 'retfound'], help="Specify the backbone model (retfound_d2_s, retfound_d2_m, dinov3_large, dinov2_large, visionfm).")
-parser.add_argument('-c','--camera_type', type=str, required=True, choices = ['Canon', 'Nikon'], help='Specify the camera type ("Canon" or "Nikon")')
-parser.add_argument('-bm', '--backbone_mode', type=str, required=True, choices=['fine_tune', 'eval'], help="Specify the backbone mode ('fine_tune' or 'eval').")
-parser.add_argument('-tp', '--timepoint', type=str, required=True, choices=['b', 'a'], help="Specify the timepoint ('b' for before_finetune or 'a' for after_finetune).")
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(description="Set backbone and backbone_mode for the model.")
+# parser.add_argument('-b','--backbone', type=str, required=True, choices=['retfound_d2_s','retfound_d2_m','dinov3_large','dinov2_large','visionfm', 'retfound'], help="Specify the backbone model (retfound_d2_s, retfound_d2_m, dinov3_large, dinov2_large, visionfm).")
+# parser.add_argument('-c','--camera_type', type=str, required=True, choices = ['Canon', 'Nikon'], help='Specify the camera type ("Canon" or "Nikon")')
+# parser.add_argument('-bm', '--backbone_mode', type=str, required=True, choices=['fine_tune', 'eval'], help="Specify the backbone mode ('fine_tune' or 'eval').")
+# parser.add_argument('-tp', '--timepoint', type=str, required=True, choices=['b', 'a'], help="Specify the timepoint ('b' for before_finetune or 'a' for after_finetune).")
+# args = parser.parse_args()
 
-# Assign parsed arguments to variables
-BACKBONE = args.backbone 
-backbone_mode = args.backbone_mode
-DATA_SOURCE = args.camera_type
-tp = args.timepoint
+# # Assign parsed arguments to variables
+# BACKBONE = args.backbone 
+# backbone_mode = args.backbone_mode
+# DATA_SOURCE = args.camera_type
+# tp = args.timepoint
 
 
 # %% 
-# BACKBONE = 'retfound'
-# backbone_mode = 'eval'
-# DATA_SOURCE = 'Canon'
-# tp = 'a'
+BACKBONE = 'dinov3_large'
+backbone_mode = 'fine_tune'
+DATA_SOURCE = 'Canon'
+tp = 'a'
 
 #%%
 print(f"Using backbone: {BACKBONE}, backbone_mode: {backbone_mode}, dataset: {DATA_SOURCE}, time point: {'before fine-tuning' if tp == 'b' else 'after fine-tuning'}")
@@ -63,8 +63,8 @@ IMAGES = os.path.join(DATASET, 'data/fundus_photos/')
 IMAGE_COL = 'image_id'
 if DATA_SOURCE == 'Canon':
     LABELS_PATH = os.path.join(DATASET, 'data/labels_brset_Canon.csv')
-elif DATA_SOURCE == 'Nikon':
-    LABELS_PATH = os.path.join(DATASET, 'data/labels_brset_NIKON.csv')
+else:
+    LABELS_PATH = os.path.join(DATASET, 'data/labels_brset_NIKON.csv') ## DATA_SOURCE == 'Nikon'
 
 
 DOWNLOAD = False
@@ -157,7 +157,7 @@ test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False,
 
 
 # %%
-def generate_embeddings(batch, batch_number, model):
+def generate_embeddings(batch, batch_number, model, device):
     """
     Generate image embeddings for a batch of images using the specified model.
 
@@ -179,7 +179,7 @@ def generate_embeddings(batch, batch_number, model):
     - It is typically used in a data loading pipeline to generate embeddings for a dataset.
     """
     image_names, images = batch['image_id'], batch['image']
-
+    images = images.to(device)
     with torch.no_grad():
         features = model(images)
 
@@ -209,24 +209,33 @@ if ddp:
         find_unused_parameters=False
     )
 
-
+#%%
 if tp == 'a':
-    path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_3class_{LABEL}_best.pth')
+    path = os.path.join(DATASET, f'output/models/FT_{BACKBONE}_{backbone_mode}_binary_{LABEL}_best.pth')
     # All ranks load the SAME checkpoint
     net = torch.load(path, map_location=device)
 
     # Handle DDP / non-DDP key differences
     if ddp:
-        backbone_model.module.load_state_dict(net, strict=False)
+        load_info = backbone_model.module.load_state_dict(net, strict=True)
     else:
-        backbone_model.load_state_dict(net, strict=False)
-    
+        load_info = backbone_model.load_state_dict(net, strict=True)
+    # load_info = backbone_model.backbone.load_state_dict(
+    #     {k.replace("backbone.backbone.", ""): v 
+    #     for k, v in net.items() 
+    #     if k.startswith("backbone.backbone.")},
+    #     strict=True
+    # )
+
+    print(f"Loaded fine-tuned weights from: {path}")
+    print("Missing keys:", load_info.missing_keys)
+    print("Unexpected keys:", load_info.unexpected_keys)
 # %% [markdown]
 # ### Generate embeddings
 img_names = []
-embeddings_list = np.empty((0, 1024))
+embeddings_list = np.empty((0, 768 if BACKBONE == "visionfm" else 1024))
 for batch_number, batch in enumerate(test_dataloader, start=1):
-    img_names_aux, features_aux = generate_embeddings(batch, batch_number, backbone_model)
+    img_names_aux, features_aux = generate_embeddings(batch, batch_number, backbone_model, device)
     # Convert features to numpy array once per batch
     features_np = features_aux.cpu()
     # Save image ids and features as a dictionary to a .pt file

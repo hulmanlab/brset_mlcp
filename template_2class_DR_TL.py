@@ -249,7 +249,7 @@ test_dataloader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False,
 
 # %%
 # Create the model
-backbone_model = FoundationalCVModel(backbone=BACKBONE, mode=MODE, weights=weights)
+backbone_model = FoundationalCVModel(backbone=BACKBONE, mode=backbone_mode, weights=weights)
 model = FoundationalCVModelWithClassifier(backbone_model, hidden=HIDDEN, num_classes=num_classes, mode=MODE, backbone_mode=backbone_mode)
 model.to(device)
 
@@ -336,8 +336,9 @@ else:
     model.load_state_dict(net, strict=False)
 
 if is_main_process:
-    test(model, test_dataloader, saliency=True, device=device, save_prob=True,prob_name=f'TL_{BACKBONE}_{backbone_mode}_binary')
+    test(model, test_dataloader, saliency=False, device=device, save_prob=True,prob_name=f'TL_{BACKBONE}_{backbone_mode}_binary')
 
 #%% frees distributed resources
 if ddp:
+    torch.distributed.barrier()
     torch.distributed.destroy_process_group()

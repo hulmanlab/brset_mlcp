@@ -318,8 +318,9 @@ else:
 
 # %%
 if is_main_process:
-    test(model, test_dataloader, saliency=True, device=device, save_prob=True, prob_name=f'FT_{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}')
+    test(model, test_dataloader, saliency=False, device=device, save_prob=True, prob_name=f'FT_{BACKBONE}_{backbone_mode}_3class{"_reproduce" if reproduce == True else ""}')
 
 #%% frees distributed resources
 if ddp:
+    torch.distributed.barrier()
     torch.distributed.destroy_process_group()
