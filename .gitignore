@@ -47,3 +47,9 @@ build/
 env/
 .conda/
 .local/share/jupyter/kernels
+
+# 
+evaluation/for3classes_EX/*
+evaluation/per_image_bootstrap/*
+evaluation/dca.R
+evaluation/patient_eye_stratify.py

@@ -41,7 +41,7 @@ Adjustments for local application has been made.
 
 ### 4. Models and Outputs
 
-* **Models:** Saved in `output/models/` after fine-tuning.
+* **Models:** Saved in `output/models/` after fine-tuning. The checkpoints can be found at https://huggingface.co/livie/BRSET-Found
 * **Output predicted probabilities:** Stored in `output/predicted_probabilities/`, organized by experiment, including analysis results.
 
 ### 5. Evaluation

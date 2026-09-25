@@ -89,6 +89,7 @@ for (i in seq_along(files)) {
     ) +
     scale_fill_manual(values = c(meanpred = "grey70", meanobs  = "black"),
                       labels = c(meanpred = "Predicted", meanobs  = "Observed")) +
+    scale_y_continuous(limits = c(0, 100)) +
     labs(x = "Deciles of predicted risk",
       y = "Observed risk (%)",
       fill = ""
@@ -102,7 +103,7 @@ for (i in seq_along(files)) {
     recursive = TRUE,
     showWarnings = FALSE
   )
-  # ggsave(sprintf(file.path(prob_root, "calibration_plots_decile", "%s_%s.png"), model_name, mode), p, width = 11, height = 7.7, dpi = 300)
+  ggsave(sprintf(file.path(prob_root, "calibration_plots_decile", "%s_%s.png"), model_name, mode), p, width = 11, height = 7.7, dpi = 300)
   rm(df, pt)
 #   graphics.off()
   gc(FALSE)
